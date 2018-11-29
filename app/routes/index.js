@@ -7,6 +7,10 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
+router.get('/product', function(req,res){
+  res.render('product');
+});
+
 router.get('/token',function(req,res){
   let params ={
     username: 'FEUP',
