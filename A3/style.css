@@ -1492,3 +1492,17 @@ MOBILE
     border-left: 1px
     background-color: rgb(233,233,233);
 }
+
+.order-title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.order-title h3{
+    margin:0;
+    padding: 0;
+}
+
