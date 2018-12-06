@@ -13,7 +13,7 @@ nodejs -v
 ### Run app
 ```
 cd app
-npm install nodemon -g --save
+npm install
 npm start
 
 ```
