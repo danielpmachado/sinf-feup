@@ -8,7 +8,7 @@ router.get('/', function(req, res) {
 });
 
 /* GET home Page */
-router.get('/token', function(req, res) {
+router.get('/try-token', function(req, res) {
   res.render('token');
 });
 
