@@ -24,6 +24,7 @@ body{
     font-weight: 200;
     min-height: 100vh;
     position: relative;
+    min-width: 476px;
 }
 
 /*
@@ -378,12 +379,17 @@ FOOTER
 */
 
 .footer-distributed{
-    position: absolute;
-    bottom: 0;
     background-color: #292b2c;
     width: 100%;
     padding: 50px;
     border-top: 1px solid var(--contrast-color);
+}
+
+@media only screen and (min-width: 767px) {
+    .footer-distributed {
+        position: absolute;
+        bottom: 0;
+    }
 }
 
 .footer-distributed .footer-left,
