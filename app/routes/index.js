@@ -8,8 +8,8 @@ router.get('/', function(req, res) {
 });
 
 /* GET home Page */
-router.get('/home', function(req, res) {
-  res.render('home');
+router.get('/token', function(req, res) {
+  res.render('token');
 });
 
 router.get('/token',function(req,res){
