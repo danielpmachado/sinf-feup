@@ -19,10 +19,11 @@ MAIN CONFS
 
 body{
     background-color: var(--main-text-color);
-    margin-top: 55px;
     /* font-family: 'Nunito', sans-serif; */
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
+    min-height: 100vh;
+    position: relative;
 }
 
 /*
@@ -377,6 +378,8 @@ FOOTER
 */
 
 .footer-distributed{
+    position: absolute;
+    bottom: 0;
     background-color: #292b2c;
     width: 100%;
     padding: 50px;
