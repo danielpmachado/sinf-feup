@@ -1,0 +1,251 @@
+<div id="progress-bar" class="container">
+    <div class="row">
+        <div class="board">
+            <ul class="nav nav-tabs">
+                <div class="liner"></div>
+                <li rel-index="0" class="active">
+                    <a href="#step-1" class="btn" aria-controls="step-1" role="tab" data-toggle="tab">
+                        <span> 1  </span>
+                        </a><a>  Cart </a>
+                    
+                </li>
+                <li rel-index="1">
+                    <a href="#step-2" class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">
+                        <span> 2  </span>
+                        </a><a> Expedition </a>
+
+                    
+                </li>
+                <li rel-index="2">
+                    <a href="#step-3" class="btn disabled" aria-controls="step-3" role="tab" data-toggle="tab">
+                        <span> 3 </span>
+                        </a><a> Payment </a>
+                    
+                </li>
+                <li rel-index="3">
+                    <a id="step-4-link" href="#step-4" class="btn disabled" aria-controls="step-4" role="tab" data-toggle="tab">
+                        <span> 4</span>
+                        </a><a> Confirmation</a>
+                    
+                </li>
+            </ul>
+        </div>
+
+                 
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="step-1">
+    <div class="col-md-17">
+        <div class="container">
+            <div class="card shopping-cart">
+                <div class="card-header bg-dark text-light ">
+                    <p class="float-left mb-0" style="padding-top: 5px">Shopping cart</p>
+                </div>
+                <div class="card-body">
+
+                    <div class="product-order" data-id="2">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 text-center float-left">
+            <img class="img-responsive" src="/images/products/MacBook.png" alt="prewiew" width="120" height="80">
+        </div>
+
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
+            <a href="/products/2" class="product-name"><strong>MacBook Pro</strong></a>
+            <p>1832.99 €</p>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-2 float-right">
+
+            <button id="delete" type="button" class="btn btn-outline-danger float-right">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+
+            <div class="quantity">
+                <input id="quantity" type="button" value="+" class="plus">
+                <input value="1" class="qty" size="4" disabled="">
+                <input id="quantity" type="button" value="-" class="minus">
+            </div>
+
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="product-order" data-id="8">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 text-center float-left">
+            <img class="img-responsive" src="/images/products/hp_pavilon.png" alt="prewiew" width="120" height="80">
+        </div>
+
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
+            <a href="/products/8" class="product-name"><strong>Portátil Híbrido 14' HP Pavilion X360 14</strong></a>
+            <p>849.99 €</p>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-2 float-right">
+
+            <button id="delete" type="button" class="btn btn-outline-danger float-right">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+
+            <div class="quantity">
+                <input id="quantity" type="button" value="+" class="plus">
+                <input value="2" class="qty" size="4" disabled="">
+                <input id="quantity" type="button" value="-" class="minus">
+            </div>
+
+        </div>
+    </div>
+    <hr>
+</div>
+
+<div class="product-order" data-id="3">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-2 text-center float-left">
+            <img class="img-responsive" src="/images/products/huawei-p20-pro.png" alt="prewiew" width="120" height="80">
+        </div>
+
+        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
+            <a href="/products/3" class="product-name"><strong>Huawei P20 Pro</strong></a>
+            <p>788.99 €</p>
+        </div>
+
+        <div class="col-12 col-sm-12 col-md-2 float-right">
+
+            <button id="delete" type="button" class="btn btn-outline-danger float-right">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+
+            <div class="quantity">
+                <input id="quantity" type="button" value="+" class="plus">
+                <input value="1" class="qty" size="4" disabled="">
+                <input id="quantity" type="button" value="-" class="minus">
+            </div>
+
+        </div>
+    </div>
+    <hr>
+</div>
+
+
+                   
+                    
+                </div>
+                <div class="card-footer">
+                    <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn">Checkout</button>
+                    <div class=" pt-2">
+                        Total price: <b class="price">4321.96</b> €
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <div role="tabpanel" class="tab-pane" id="step-2">
+    <div class="container-fluid" style="width:70%;">
+        <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">Expedition Info</div>
+            <div class="card-body">
+                <form class="form-horizontal">
+                
+                    <div class="form-group">
+                        <a> Address </a>
+                        <input id="address" type="text" class="form-control" name="address" value="address" required="">
+                    </div>
+                
+                    <div class="form-row">
+                        <div class="form-group col-md-8 ">
+                            <a> City </a>
+                            <input id="city" type="text" class="form-control" name="city" value="city" required="">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <a> Zip </a>
+                            <input id="zip" type="text" class="form-control" name="zip" value="zip" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <a> Contact </a>
+                        <input id="contact" type="text" class="form-control" name="contact" value="daniel.pmachado28@gmail.com" required="">
+                    </div>
+                </form>
+                </div>
+                <div class="card-footer ">
+                    <button id="step-2-next" type="submit" class="btn btn-outline-dark float-right">
+                        Next
+                    </button>
+                </div>
+            
+        </div>
+    </div>
+</div>            <div role="tabpanel" class="tab-pane" id="step-3">
+    <div class="container-fluid" style="width:60%;">
+        <div class="card shopping-cart">
+            <div class="card-header bg-dark text-light">Payment</div>
+            <div class="card-body">
+                <form class="form-horizontal">
+               
+                    
+                    <div class="row justify-content-center">
+                        <div class="mx-5">
+                            <input id="visa" type="radio" name="payment" value="Visa" checked="">      
+                            <label for="visa"><i class="fab fa-cc-visa fa-5x"></i></label>
+                        </div>
+                        <div class="mx-5"><input id="mastercard" type="radio" name="payment" value="MasterCard"><label for="mastercard"><i class="fab fa-cc-mastercard fa-5x"></i></label></div>
+                        <div class="mx-5"><input id="paypal" type="radio" name="payment" value="PayPal"> <label for="paypal"><i class="fab fa-cc-paypal fa-5x"></i></label></div>
+                    </div>
+                  
+                </form>
+            </div>
+            <div class="card-footer ">
+                <button id="step-3-next" type="submit" class="btn btn-outline-dark float-right">
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</div>            <div role="tabpanel" class="tab-pane" id="step-4">
+    <div class="container-fluid" style="width:70%;">
+        <div class="card fav-cart">
+            <div class="card-header bg-dark text-light">Purchase Confirmation</div>
+            <div class="card-body">
+                <h5><strong>Products</strong></h5>
+
+                                <div class="product-conf" data-id="2">
+                    <h6><strong>Name:</strong> MacBook Pro</h6>
+                    <h6 class="qty"><strong>Quantity:</strong>  1</h6>
+                    <h6><strong>Price:</strong>  1832.99 €</h6>
+                    <br>
+                </div>
+                                <div class="product-conf" data-id="8">
+                    <h6><strong>Name:</strong> Portátil Híbrido 14' HP Pavilion X360 14</h6>
+                    <h6 class="qty"><strong>Quantity:</strong>  2</h6>
+                    <h6><strong>Price:</strong>  849.99 €</h6>
+                    <br>
+                </div>
+                                <div class="product-conf" data-id="3">
+                    <h6><strong>Name:</strong> Huawei P20 Pro</h6>
+                    <h6 class="qty"><strong>Quantity:</strong>  1</h6>
+                    <h6><strong>Price:</strong>  788.99 €</h6>
+                    <br>
+                </div>
+                                <hr>
+
+                <h5><strong>Expedition Info</strong></h5>
+                <h6><strong>Address: </strong> <span id="address-conf"></span></h6>
+                <h6><strong>Contact: </strong> <span id="contact-conf"></span></h6>
+                <h6><strong>Payment Method: </strong> <span id="payment-conf"></span></h6>
+                <hr>
+
+                <h6 class="float-right"><strong>Total:</strong> <span id="total-conf">4321.96</span> €</h6>
+
+            </div>
+            <div class="card-footer">
+                <button id="confirmation" type="submit" class="btn btn-outline-dark float-right">
+                <i class="fas fa-check"></i> Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>        </div>
+    </div>
+</div>
