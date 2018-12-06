@@ -385,13 +385,6 @@ FOOTER
     border-top: 1px solid var(--contrast-color);
 }
 
-@media only screen and (min-width: 767px) {
-    .footer-distributed {
-        position: absolute;
-        bottom: 0;
-    }
-}
-
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
 .footer-distributed .footer-right{

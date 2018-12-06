@@ -1,4 +1,320 @@
-<h1>Tech4U</h1>
-<p>Welcome to Tech4U</p>
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="modal-cart">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Cart Access Denied</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You need to Sign In in order to access to the Cart section. <br>
+                If you don't have an account you should register yourself.
+            </div>
+            <div class="modal-footer" id="cart-footer">
+                <form action="/register">
+                    <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+                    <input type="hidden" name="_method" value="GET">
+                    <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+                </form>
+                <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" id="modal-cart">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Online Help</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="help-spotlight">Welcome to Tech4U!</p>
+                <p>
+                    Only logged users have access to all functionalities of this website. Although not logged in,
+                    you can search for products by using our search bar or searching for category.
+                </p>
+                <hr>
+                <p class="help-spotlight">Sign In</p>
+                <p>
+                    You have a quick access to login form through the navigation bar on <span class="category">Sign In</span>.
+                    If you don't have a account yet, you can easily do it following the same path but chosing
+                    <span class="category">New here? Sign up</span> instead.
+                </p>
+                <hr>
+                <p class="help-spotlight">Add a product to cart</p>
+                <p>
+                    You have the option <span class="category"><i class="fa fa-shopping-cart"></i> Add to Cart</span> from the page of
+                    the product or directly from the catalog or search results.
+                </p>
+                <hr>
+                <p class="help-spotlight">Add a product to Wishlist</p>
+                <p>
+                    You have the option <span class="category"><i class="fa fa-heart"></i> Add to Wishlist</span> from the page of
+                    the product.
+                </p>
+                <hr>
+                <p class="help-spotlight">Finalize a purchase</p>
+                <p>
+                    You just have to press to <span class="category"><i class="fa fa-shopping-cart"></i></span> at the right of navigation bar
+                    and follow the steps.
+                </p>
+                <hr>
+                <p class="help-spotlight">Edit Profile</p>
+                <p>
+                    Click at your name on the navigation bar and choose <span class="category">Profile</span>. At your
+                    profile page, choose <span class="category"><i class="fa fa-cogs"></i> Settings</span>. There you
+                    can change your name, address, etc.
+                </p>
+                <hr>
+                <p class="help-spotlight">Delete account</p>
+                <p>
+                    Follow the same steps for edit your profile. At the page for edit your profile, you will have thead
+                    option <span class="category">Delete Account</span>. Atention: this action is irreversible.
+                </p>
+            </div>
+            <div class="modal-footer" id="cart-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">I understood</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<a href="/token" method="post">Get Token</a>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class=""></li>
+    <li data-target="#demo" data-slide-to="1" class=""></li>
+    <li data-target="#demo" data-slide-to="2" class=""></li>
+    <li data-target="#demo" data-slide-to="3" class="active"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item">
+      <img src="/images/carousel/banner-huawei-p20pro.jpg" alt="huawei p20 pro" width="1200" height="300">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/carousel/banner-iphone-x.jpg" alt="iPhone X" width="1200" height="300">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/carousel/banner-ps4.jpg" alt="Ps4" width="1200" height="300">
+    </div>
+    <div class="carousel-item active">
+      <img src="/images/carousel/banner-macbook.jpg" alt="Macbook" width="1200" height="300">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+<div id="featured" class="row h2">Featured Products</div>
+
+<div id="featured-container" class="container-fluid">
+  <div class="row justify-content-center">
+
+      <div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/MacBook.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">MacBook Pro</h5>
+        <p class="card-text" style="height:-20px;">1832.99€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="2">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/2" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/huawei-p20-pro.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">Huawei P20 Pro</h5>
+        <p class="card-text" style="height:-20px;">788.99€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="3">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/3" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/microsoft_pc1.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">MICROSOFT Surface Laptop 13.5' Platina</h5>
+        <p class="card-text" style="height:-20px;">993.79€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="13">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/13" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/mi-mix2.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">Xiaomi Mi Mix 2 S 64GB</h5>
+        <p class="card-text" style="height:-20px;">599€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="5">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/5" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+</div>
+</div>
