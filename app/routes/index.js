@@ -7,11 +7,6 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-/* GET home Page */
-router.get('/try-token', function(req, res) {
-  res.render('token');
-});
-
 router.get('/token',function(req,res){
   let params ={
     username: 'FEUP',
