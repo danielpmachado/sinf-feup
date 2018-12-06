@@ -7,36 +7,54 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/product', function(req,res){
+function tokenMiddleware() {
+  return (req, res, next) => {
+    let params ={
+      username: 'FEUP',
+      password: 'qualquer1',
+      company: 'BELAFLOR',
+      instance: 'DEFAULT',
+      grant_type: 'password',
+      line: 'professional'
+    };
+
+    request.post({url: 'http://localhost:2018/WebApi/token', form:params}, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+        res.token = JSON.parse(body).access_token;
+        next();
+      }
+    });
+  }
+}
+
+
+router.get('/product',tokenMiddleware(), function(req,res){
+  let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + 'A0001' + '\'';
+
+  let options = {
+    method: 'post',
+    body: query,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+ console.log(res.token);
+ 
+  request(options, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+       console.log(body.DataSet.Table[0]);
+      }
+    });
   res.render('product');
 });
 
-router.get('/token',function(req,res){
-  let params ={
-    username: 'FEUP',
-    password: 'qualquer1',
-    company: 'BELAFLOR',
-    instance: 'DEFAULT',
-    grant_type: 'password',
-    line: 'professional'
-  };
-
-  
-  let headersOpt = {
-    'content-type': 'application/x-www-form-urlencoded',
-  };
-
-  request.post({url: 'http://localhost:8080/WebApi/token', form:params}, (error, response, body) => {
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      res.send(body);
-      res.status(200);
-    }
-  });
-
-});
 
 
 module.exports = router;
