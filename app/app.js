@@ -8,6 +8,7 @@ var hbs = require('express-handlebars');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var register = require('./routes/register');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/register', register);
 app.use('/product', product);
 app.use('/user', users);
 app.use('/cart', cart);
