@@ -1,34 +1,33 @@
-<ol class="p_breadcrumb breadcrumb">
-    <li class="breadcrumb-item h6"><a href="/">Home</a></li>
-    <li class="breadcrumb-item h6"><a href="#">Catalog</a></li>
-    <li class="breadcrumb-item active h6">NAME</li>
-</ol>
-<hr>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item"><a href="catalog.html">Catalog</a></li>
+    <li class="breadcrumb-item active">Product</li>
+  </ol>
 
-<div class="product-section">
-	<div class="container-fluid product-page product">
+  <div class="container-fluid product-section">
+
 
 	<div class="row">
 		<div class="col-md-6 text-center">
-			<img class="product-image" alt="product preview" src="" />
+			<img class="product-image" alt="product preview" src="images/IphoneX.png" />
 
 		<div class="row">
 			<div class="col-md-12">
 			<div class="rating-block">
-				<h2 class="bold padding-bottom-7">SCORE<small>/ 5</small></h2>
-				<button type="button" class="btn @if($product->score > 0) btn-primary @else btn-dark btn-grey @endif btn-sm" aria-label="Left Align" disabled>
+				<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
-				<button type="button" class="btn  @if($product->score > 1) btn-primary @else btn-dark btn-grey @endif btn-sm" aria-label="Left Align" disabled>
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
-				<button type="button" class="btn @if($product->score > 2) btn-primary @else btn-dark btn-grey @endif btn-sm" aria-label="Left Align" disabled>
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
-				<button type="button" class="btn  @if($product->score > 3) btn-primary @else btn-dark btn-grey @endif btn-sm" aria-label="Left Align" disabled>
+				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
-				<button type="button" class="btn  @if($product->score > 4) btn-primary @else btn-dark btn-grey @endif btn-sm" aria-label="Left Align" disabled>
+				<button type="button" class="btn btn-dark btn-grey btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
 			</div>
@@ -36,25 +35,30 @@
 		</div>
 		</div>
 		<div class="col-md-6" id="description-box">
-			<h4 class="text" id="product-name-details">NAME</h4>
-			<h3 class="text-success" id="price-tag">110000 €</h3>
+			<h4 class="text" id="product-name-details">IPHONE X - 256 GB</h4>
+			<h3 class="text-success" id="price-tag">1199 €</h3>
 
 			<div class="row">
-				<div class="col-md-11 product-specs">
+				<div class="col-md-12 ">
 
-					<div class="product-buttons" >
-
-						<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#buttons-modal">
+					<div id="purchases-buttons">
+						<button type="button" class="btn btn-outline-success">
 							<i class="fa fa-shopping-cart"></i> Add to Cart
 						</button>
-						<button id="fav" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#buttons-modal">
-							<i class="fa fa-heart"></i> Add to Wishlist
+						<button type="button" class="btn btn-outline-danger">
+							<i class="fa fa-heart"></i> Add to Favorites
 						</button>
-
 					</div>
-				
+
 					<p><span class="description-tag">Description</span></p>
-					DESCRIPTION
+					<p>
+						smartphone with 256 GB storage capacity and 5.8 "Super Retina display (2436 x 1125 pixels at 458 dpi),
+						with contrast ratio of 1000000: 1;
+						resistant to water and dust; Face ID;
+						Bionic A11 processor with 64-bit architecture; wireless charging;
+						12MP wide-angle and telephoto cameras and TrueDepth camera;
+						4K video recording at 24, 30 or 60 fps; Talk time (wireless) up to 21 hours.
+					</p>
 				</div>
 			</div>
         <br><br><br><br>
