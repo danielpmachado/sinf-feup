@@ -41,18 +41,19 @@ router.get('/product',tokenMiddleware(), function(req,res){
     url: 'http://localhost:2018/WebApi/Administrador/Consulta',
     headers: {'Authorization': 'Bearer ' + res.token}
   };
-
- console.log(res.token);
-
+ 
+  console.log(res.token);
+ 
   request(options, (error, response, body) => {
-      if (error) {
-        console.error(error);
-        return;
-      } else {
-       console.log(body.DataSet.Table[0]);
-      }
-    });
-  res.render('product');
+    var context = {};
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+      context = body.DataSet.Table[0];
+      res.render('product', context);
+    }
+  });
 });
 
 
