@@ -188,5 +188,27 @@ router.get('/get_category',tokenMiddleware(), function(req,res){
     });
 });
 
+router.get('/admin/list_users', tokenMiddleware(), function (req, res) {
+    let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib, Pais, Moeda FROM Clientes';
+
+    let options = {
+        method: 'post',
+        body: query,
+        json: true,
+        url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+        headers: { 'Authorization': 'Bearer ' + res.token }
+    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            var context = body.DataSet.Table[0];
+            res.render('admin/list_users', context);
+        }
+    });
+});
+
 
 module.exports = router;
