@@ -11,12 +11,17 @@ var users = require('./routes/users');
 var register = require('./routes/register');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
+var admin = require('./routes/admin/admin');
+var addProduct = require('./routes/admin/add_product');
+var listUsers = require('./routes/admin/list_users');
+var productAdmin = require('./routes/admin/product_admin');
+
 
 var app = express();
 
 // view engine setup
 app.engine('hbs', hbs({
-    extname: 'hbs', 
+    extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: __dirname + '/views/layouts/',
     partialsDir: __dirname + '/views/partials/',
@@ -37,6 +42,10 @@ app.use('/register', register);
 app.use('/product', product);
 app.use('/user', users);
 app.use('/cart', cart);
+app.use('/admin/admin', admin);
+app.use('/admin/add_product', addProduct);
+app.use('/admin/list_users', listUsers);
+app.use('/admin/product_admin', productAdmin);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
