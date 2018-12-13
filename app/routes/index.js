@@ -30,7 +30,15 @@ function tokenMiddleware() {
   }
 }
 
-
+/**
+ * Example
+ * var context = {
+ *  Descricao: 'Iphone with 256 GB...',
+ *  PVP1: 1500,
+ *  Modelo: 'Iphone X',
+ *  Marca: 'Apple'
+ * }
+ */
 router.get('/product',tokenMiddleware(), function(req,res){
   let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + 'A0001' + '\'';
 
@@ -42,15 +50,12 @@ router.get('/product',tokenMiddleware(), function(req,res){
     headers: {'Authorization': 'Bearer ' + res.token}
   };
  
-  console.log(res.token);
- 
   request(options, (error, response, body) => {
-    var context = {};
     if (error) {
       console.error(error);
       return;
     } else {
-      context = body.DataSet.Table[0];
+      var context = body.DataSet.Table[0];
       res.render('product', context);
     }
   });
@@ -58,7 +63,7 @@ router.get('/product',tokenMiddleware(), function(req,res){
 
 
 router.get('/catalog/Computers',tokenMiddleware(), function(req,res){
-  let query = 'SELECT a.Artigo, a.Descricao, a.marca,  a.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Famila =' + '\'' + 'F001' + '\'';
+  let query = 'SELECT a.Artigo, a.Descricao, a.marca, a.PVP1 FROM Artigo as a INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Famila =' + '\'' + 'F001' + '\'';
 
   let options = {
     method: 'post',
