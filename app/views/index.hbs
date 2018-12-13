@@ -37,8 +37,199 @@
 
 <div id="featured-container" class="container-fluid">
   <div class="row justify-content-center">
-    
-{{> templates/productTemplate }}
+
+      <div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/MacBook.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">MacBook Pro</h5>
+        <p class="card-text" style="height:-20px;">1832.99€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="2">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/2" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/huawei-p20-pro.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">Huawei P20 Pro</h5>
+        <p class="card-text" style="height:-20px;">788.99€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="3">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/3" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/microsoft_pc1.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">MICROSOFT Surface Laptop 13.5' Platina</h5>
+        <p class="card-text" style="height:-20px;">993.79€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="13">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/13" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="card col-lg-3 col-md-3 col-sm-6 ">
+    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+        <img class="card-img-top" src="/images/products/mi-mix2.png" alt="Card image cap">
+    </div>
+
+    <div class="card-body ">
+        <h5 class="card-title">Xiaomi Mi Mix 2 S 64GB</h5>
+        <p class="card-text" style="height:-20px;">599€ -
+                        Available
+                    </p>
+        <hr>
+            <div class="card-btn product" data-id="5">
+                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                            <i class="fa fa-shopping-cart"></i> Add to Cart
+                        </button>
+                                                    <a href="/products/5" class="btn btn-outline-dark">
+                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                </a>
+            </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="buttons-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" id="modal-cart">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Access Denied</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            You need to Sign In in order to access to the cart and wishlist section.<br>
+            If you don't have an account you should register yourself.
+        </div>
+        <div class="modal-footer" id="cart-footer">
+        <form action="/register">
+        <input type="hidden" name="_token" value="1qpS2gz6UShckq4xYXhu1lfD3OYFlZl3JfkUQZ2P">
+        <input type="hidden" name="_method" value="GET">
+        <button class="btn btn-dark" type="submit" style="padding-right=5em; padding-left=5em;"> Sign Up </button>
+        </form>
+        <button type="button" class="btn btn-success" data-dismiss="modal" style="padding-right=5em; padding-left=5em;"> OK </button>
+        </div>
+    </div>
+    </div>
+</div>
+
 
 </div>
 </div>
