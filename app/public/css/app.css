@@ -1417,3 +1417,8 @@ MOBILE
         padding-left: 10px;
     }
 }
+
+.template-for-fill {
+    background-color: #DDD;
+    border-radius: 0.2em;
+}  
