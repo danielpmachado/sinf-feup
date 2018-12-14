@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\routes",
+    "\\app\\views",
+    "\\app\\views\\admin"
+  ],
+  "SelectedNode": "\\app\\views\\catalog.hbs",
+  "PreviewInSolutionExplorer": false
+}
