@@ -7,7 +7,7 @@ function tokenMiddleware() {
     let params ={
       username: 'FEUP',
       password: 'qualquer1',
-      company: 'BELAFLOR',
+      company: 'TECH4U',
       instance: 'DEFAULT',
       grant_type: 'password',
       line: 'professional'
@@ -53,6 +53,7 @@ router.get('/page',tokenMiddleware(), function(req,res){
       return;
     } else {
       var context = body.DataSet.Table[0];
+      console.log()
       if(context != null)
         context.Artigo = productID;
       console.log(context);
