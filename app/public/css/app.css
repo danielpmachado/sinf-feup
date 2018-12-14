@@ -625,7 +625,7 @@ PRODUCT
 }
 
 .p_breadcrumb{
-    margin: 30px 0 0 80px;
+    margin: 25px 0 0 80px;
     padding:0;
     background-color: var(--main-text-color);
 }
@@ -1107,7 +1107,8 @@ PRODUCT CARDS
 }
 
 .product-card{
-    margin: 20px;
+    padding-top:10px;
+    margin: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 

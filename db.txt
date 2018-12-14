@@ -10,11 +10,17 @@ F005 - Components
 MARCAS:
 B001 - Apple
 B002 - Huawei
+B003 - Microsoft
 
 ARTIGO:
----------------------------------
 A001 
     Familia - F001
-    Descrição - Macbook Pro
+    Descricao - Macbook Pro
     PVP1 - 1832,99
     Marca - B001
+
+A002
+    Familia - F001
+    Descricao - Surface Laptop 13.5' Platina
+    PVP1 - 993.79
+    Marca - B003

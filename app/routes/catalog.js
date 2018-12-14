@@ -26,7 +26,7 @@ function tokenMiddleware() {
 }
 
 router.get('/computers',tokenMiddleware(), function(req,res){
-  let query = 'SELECT a.Artigo, a.Descricao, a.marca, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F001' + '\'';
+  let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F001' + '\'';
 
   let options = {
     method: 'post',
@@ -36,15 +36,13 @@ router.get('/computers',tokenMiddleware(), function(req,res){
     headers: {'Authorization': 'Bearer ' + res.token}
   };
 
- console.log(res.token);
-
   request(options, (error, response, body) => {
       if (error) {
         console.error(error);
         return;
       } else {
-        var products = body.DataSet.Table[0];
-        res.render('catalog',{category: 'Computers',products});
+        var products = body.DataSet.Table;
+        res.render('catalog',{category: 'Computers', products});
       }
     });
 });

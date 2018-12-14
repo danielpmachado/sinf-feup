@@ -13,11 +13,12 @@ var product = require('./routes/product');
 var cart = require('./routes/cart');
 var catalog = require('./routes/catalog');
 
+
 var app = express();
 
 // view engine setup
 app.engine('hbs', hbs({
-    extname: 'hbs', 
+    extname: 'hbs',
     defaultLayout: 'layout',
     layoutsDir: __dirname + '/views/layouts/',
     partialsDir: __dirname + '/views/partials/',
@@ -36,7 +37,6 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/product', product);
-app.use('/user', users);
 app.use('/cart', cart);
 app.use('/catalog',catalog);
 

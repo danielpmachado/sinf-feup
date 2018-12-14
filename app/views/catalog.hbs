@@ -4,30 +4,28 @@
     </ol>
 <hr>
 
-<div class="card col-lg-2 col-md-3 col-sm-6 product-card">
-    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
-        <img class="card-img-top" alt="Card image cap">
-    </div>
-
-    <div class="card-body product" >
-        <h5 class="card-title"></h5>
-        <p class="card-text" style="height:-20px;">€ -
-        </p>
-        <hr>
-        <div class="card-btn">
-            <button id="cart" type="button" class="btn btn-outline-success btn-block mb-2">
-                <i class="fa fa-shopping-cart"></i> Add to Cart
-            </button>
-            <a href="" class="btn btn-outline-dark btn-block">
-                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
-            </a>
-        </div>
-    </div>
-</div>
-
-
 <div id="search-container" class="container-fluid">
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
+        {{#each products}}
+        <div class="card col-lg-2 col-md-3 col-sm-6 product-card p-30">
+            <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;" >
+                <img class="card-img-top" alt="Card image cap" src="/images/products/{{this.Artigo}}.jpg">
+            </div>
 
+            <div class="card-body product" >
+                <h5 class="card-title font-weight-bold">{{this.Descricao}}</h5>
+                <p class="card-text" style="height:-20px;">{{this.PVP1}}€</p>
+                <hr>
+                <div class="card-btn">
+                    <button id="cart" type="button" class="btn btn-outline-success btn-block mb-2">
+                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                    </button>
+                    <a href="/product/page/{{this.Artigo}}" class="btn btn-outline-dark btn-block">
+                        See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
     </div>
 </div>

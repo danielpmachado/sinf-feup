@@ -12,7 +12,7 @@ function tokenMiddleware() {
     let params ={
       username: 'FEUP',
       password: 'qualquer1',
-      company: 'TECH4U',
+      company: 'BELAFLOR',
       instance: 'DEFAULT',
       grant_type: 'password',
       line: 'professional'
@@ -33,6 +33,7 @@ function tokenMiddleware() {
 /**
  * Example
  * var context = {
+ *  Artigo: 'A0001',
  *  Descricao: 'Iphone with 256 GB...',
  *  PVP1: 1500,
  *  Modelo: 'Iphone X',
@@ -40,7 +41,8 @@ function tokenMiddleware() {
  * }
  */
 router.get('/product',tokenMiddleware(), function(req,res){
-  let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + 'A0001' + '\'';
+  var productID = req.query.productID;
+  let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + productID + '\'';
 
   let options = {
     method: 'post',
@@ -56,6 +58,9 @@ router.get('/product',tokenMiddleware(), function(req,res){
       return;
     } else {
       var context = body.DataSet.Table[0];
+      if(context != null)
+        context.Artigo = productID;
+      console.log(context);
       res.render('product', context);
     }
   });
