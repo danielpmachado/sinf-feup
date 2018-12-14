@@ -6,6 +6,6 @@
     "\\app\\views",
     "\\app\\views\\admin"
   ],
-  "SelectedNode": "\\app\\views\\catalog.hbs",
+  "SelectedNode": "\\app\\views\\list_users.hbs",
   "PreviewInSolutionExplorer": false
 }
