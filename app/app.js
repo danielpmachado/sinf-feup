@@ -8,9 +8,10 @@ var hbs = require('express-handlebars');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var register = require('./routes/register');
+var auth = require('./routes/auth');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
+var catalog = require('./routes/catalog');
 
 var app = express();
 
@@ -33,10 +34,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/register', register);
+app.use('/auth', auth);
 app.use('/product', product);
 app.use('/user', users);
 app.use('/cart', cart);
+app.use('/catalog',catalog);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

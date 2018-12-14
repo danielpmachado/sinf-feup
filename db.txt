@@ -1,0 +1,20 @@
+NOME: TECH4U
+
+FAMILIAS:
+F001 - Computers
+F002 - Accessories
+F003 - Mobile
+F004 - Consoles
+F005 - Components
+
+MARCAS:
+B001 - Apple
+B002 - Huawei
+
+ARTIGO:
+---------------------------------
+A001 
+    Familia - F001
+    Descrição - Macbook Pro
+    PVP1 - 1832,99
+    Marca - B001

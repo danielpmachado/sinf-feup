@@ -528,7 +528,7 @@ REGISTER
 .sign{
     width:35%;
     text-align:center;
-    margin-top:120px;
+    margin-top:60px;
     margin-bottom: 60px;
     background-color: white;
     border-radius:10px;
@@ -625,7 +625,7 @@ PRODUCT
 }
 
 .p_breadcrumb{
-    margin: 80px 0 0 80px;
+    margin: 30px 0 0 80px;
     padding:0;
     background-color: var(--main-text-color);
 }
