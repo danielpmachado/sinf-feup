@@ -51,7 +51,7 @@ router.get('/product',tokenMiddleware(), function(req,res){
     url: 'http://localhost:2018/WebApi/Administrador/Consulta',
     headers: {'Authorization': 'Bearer ' + res.token}
   };
- 
+
   request(options, (error, response, body) => {
     if (error) {
       console.error(error);
@@ -66,6 +66,7 @@ router.get('/product',tokenMiddleware(), function(req,res){
   });
 });
 
+
 router.get('/user/:userID',tokenMiddleware(), function(req,res){
   let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib, Pais, Moeda FROM Clientes WHERE Clientes.Cliente=' + '\'' + req.params.userID + '\'';
 
@@ -76,7 +77,7 @@ router.get('/user/:userID',tokenMiddleware(), function(req,res){
     url: 'http://localhost:2018/WebApi/Administrador/Consulta',
     headers: {'Authorization': 'Bearer ' + res.token}
   };
- 
+
   request(options, (error, response, body) => {
     if (error) {
       console.error(error);
@@ -98,7 +99,7 @@ router.get('/user/orders:userID',tokenMiddleware(), function(req,res){
     url: 'http://localhost:2018/WebApi/Administrador/Consulta',
     headers: {'Authorization': 'Bearer ' + res.token}
   };
- 
+
   request(options, (error, response, body) => {
     if (error) {
       console.error(error);

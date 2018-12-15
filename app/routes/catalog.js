@@ -25,19 +25,10 @@ function tokenMiddleware() {
   }
 }
 
-/**
- * Example
- * var context = {
- *  Artigo: 'A0001',
- *  Descricao: 'Iphone with 256 GB...',
- *  PVP1: 1500,
- *  Modelo: 'Iphone X',
- *  Marca: 'Apple'
- * }
- */
-router.get('/page',tokenMiddleware(), function(req,res){
-  var productID = req.query.productID;
-  let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
+router.get('/:categoryID',tokenMiddleware(), function(req,res){
+  let categoryID = req.params.categoryID;
+  console.log(categoryID);
+  let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Descricao =' + '\'' + categoryID + '\'';
 
   let options = {
     method: 'post',
@@ -46,22 +37,16 @@ router.get('/page',tokenMiddleware(), function(req,res){
     url: 'http://localhost:2018/WebApi/Administrador/Consulta',
     headers: {'Authorization': 'Bearer ' + res.token}
   };
- 
+
   request(options, (error, response, body) => {
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      console.log(body);
-      var context = body.DataSet.Table[0];
-      if(context != null)
-        context.Artigo = productID;
-      console.log(context);
-      res.render('product', context);
-    }
-  });
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+        var products = body.DataSet.Table;
+        res.render('catalog',{category: 'Computers', products});
+      }
+    });
 });
-
-
 
 module.exports = router;

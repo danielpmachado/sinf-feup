@@ -54,7 +54,7 @@ div.abcRioButton.abcRioButtonLightBlue{
 
 #main-nav {
     background-color: var(--main-bg-color);
-    padding: 8px 80px;
+    padding: 4px 80px;
 }
 
 .bg-dark{
@@ -528,7 +528,7 @@ REGISTER
 .sign{
     width:35%;
     text-align:center;
-    margin-top:120px;
+    margin-top:60px;
     margin-bottom: 60px;
     background-color: white;
     border-radius:10px;
@@ -620,12 +620,16 @@ PRODUCT
 ----------
 */
 
+.product-section{
+    height:100vh;
+}
+
 .product-name{
     color: var(--main-bg-color);
 }
 
 .p_breadcrumb{
-    margin: 80px 0 0 80px;
+    margin: 20px 0 0 80px;
     padding:0;
     background-color: var(--main-text-color);
 }
@@ -651,12 +655,7 @@ PRODUCT
 
 #price-tag {
     font-size: 2.5em;
-}
-
-#product-name-details{
-    color: var(--main-bg-color);
-    font-size: 30px;
-    padding-bottom:15px;
+    margin-top:50px;
 }
 
 .description-tag {
@@ -1107,7 +1106,8 @@ PRODUCT CARDS
 }
 
 .product-card{
-    margin: 20px;
+    padding-top:10px;
+    margin: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -1297,7 +1297,7 @@ MOBILE
         padding: 2em 5em;
     }
     #main-nav{
-        padding: 8px 10px;
+        padding: 4px 10px;
     }
     #main-nav .input-group {
         width: 120px;
