@@ -37,7 +37,7 @@ function tokenMiddleware() {
  */
 router.get('/page',tokenMiddleware(), function(req,res){
   var productID = req.query.productID;
-  let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + productID + '\'';
+  let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
 
   let options = {
     method: 'post',
@@ -52,8 +52,8 @@ router.get('/page',tokenMiddleware(), function(req,res){
       console.error(error);
       return;
     } else {
+      console.log(body);
       var context = body.DataSet.Table[0];
-      console.log()
       if(context != null)
         context.Artigo = productID;
       console.log(context);

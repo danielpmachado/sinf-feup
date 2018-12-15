@@ -655,6 +655,7 @@ PRODUCT
 
 #price-tag {
     font-size: 2.5em;
+    margin-top:50px;
 }
 
 .description-tag {
