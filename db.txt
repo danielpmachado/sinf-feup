@@ -1,4 +1,4 @@
-NOME: TECH4U
+EMPRESA: TECH4U
 
 FAMILIAS:
 F001 - Computers
@@ -11,6 +11,9 @@ MARCAS:
 B001 - Apple
 B002 - Huawei
 B003 - Microsoft
+B004 - Sony
+B005 - Nintendo
+B006 - NVIDIA
 
 ARTIGO:
 A001 
@@ -22,5 +25,30 @@ A001
 A002
     Familia - F001
     Descricao - Surface Laptop 13.5' Platina
-    PVP1 - 993.79
+    PVP1 - 993,79
     Marca - B003
+
+A003
+    Familia - F002
+    Descricao - Auscultadores Bluetooth WH-CH400 G.CE7
+    PVP1 - 59,99
+    Marca - B004
+
+A004
+    Familia - F003
+    Decricao - IPhone X - 256 GB
+    PVP1 - 1349,99
+    Marca - B001
+
+A005
+    Familia - F004  
+    Decricao - Nintendo Switch Cinzenta
+    PVP1 - 329,99
+    Marca - B005
+
+A006
+    Familia - F005
+    Descricao - Aorus NVidia GeForce GTX 1080 Ti Xtreme Edition 11G
+    PVP1- 1099
+    Marca - B006
+
