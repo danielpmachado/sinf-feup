@@ -47,4 +47,95 @@ router.get('/computers',tokenMiddleware(), function(req,res){
     });
 });
 
+
+router.get('/accessories', tokenMiddleware(), function (req, res) {
+    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F002' + '\'';
+
+    let options = {
+        method: 'post',
+        body: query,
+        json: true,
+        url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+        headers: { 'Authorization': 'Bearer ' + res.token }
+    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            var products = body.DataSet.Table;
+            res.render('catalog', { category: 'Accessories', products });
+        }
+    });
+});
+
+
+router.get('/mobile', tokenMiddleware(), function (req, res) {
+    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F003' + '\'';
+
+    let options = {
+        method: 'post',
+        body: query,
+        json: true,
+        url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+        headers: { 'Authorization': 'Bearer ' + res.token }
+    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            var products = body.DataSet.Table;
+            res.render('catalog', { category: 'Mobile', products });
+        }
+    });
+});
+
+
+router.get('/consoles', tokenMiddleware(), function (req, res) {
+    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F004' + '\'';
+
+    let options = {
+        method: 'post',
+        body: query,
+        json: true,
+        url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+        headers: { 'Authorization': 'Bearer ' + res.token }
+    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            var products = body.DataSet.Table;
+            res.render('catalog', { category: 'Consoles', products });
+        }
+    });
+});
+
+
+router.get('/components', tokenMiddleware(), function (req, res) {
+    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Familia =' + '\'' + 'F005' + '\'';
+
+    let options = {
+        method: 'post',
+        body: query,
+        json: true,
+        url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+        headers: { 'Authorization': 'Bearer ' + res.token }
+    };
+
+    request(options, (error, response, body) => {
+        if (error) {
+            console.error(error);
+            return;
+        } else {
+            var products = body.DataSet.Table;
+            res.render('catalog', { category: 'Components', products });
+        }
+    });
+});
 module.exports = router;
