@@ -30,41 +30,13 @@ function tokenMiddleware() {
   }
 }
 
-/**
- * Example
- * var context = {
- *  Artigo: 'A0001',
- *  Descricao: 'Iphone with 256 GB...',
- *  PVP1: 1500,
- *  Modelo: 'Iphone X',
- *  Marca: 'Apple'
- * }
- */
-router.get('/product',tokenMiddleware(), function(req,res){
-  var productID = req.query.productID;
-  let query = 'SELECT Descricao, PVP1, Modelo, Marca FROM Artigo INNER JOIN ArtigoMoeda ON Artigo.Artigo = ArtigoMoeda.Artigo WHERE Artigo.Artigo=' + '\'' + productID + '\'';
-
-  let options = {
-    method: 'post',
-    body: query,
-    json: true,
-    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
-    headers: {'Authorization': 'Bearer ' + res.token}
-  };
-
-  request(options, (error, response, body) => {
-    if (error) {
-      console.error(error);
-      return;
-    } else {
-      var context = body.DataSet.Table[0];
-      if(context != null)
-        context.Artigo = productID;
-      console.log(context);
-      res.render('product', context);
-    }
-  });
-});
+function authenticationMiddleware(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	} else {
+		res.redirect('/users');
+	}
+}
 
 
 router.get('/user/:userID',tokenMiddleware(), function(req,res){
@@ -110,32 +82,5 @@ router.get('/user/orders:userID',tokenMiddleware(), function(req,res){
     }
   });
 });
-
-
-
-router.get('/get_category',tokenMiddleware(), function(req,res){
-  let query = 'SELECT a.Artigo, a.Descricao, a.marca, a.PVP1 FROM Artigo as a INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Famila =' + '\'' + 'F005' + '\'';
-
-  let options = {
-    method: 'post',
-    body: query,
-    json: true,
-    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
-    headers: {'Authorization': 'Bearer ' + res.token}
-  };
-
- console.log(res.token);
-
-  request(options, (error, response, body) => {
-      if (error) {
-        console.error(error);
-        return;
-      } else {
-       console.log(body.DataSet.Table[0]);
-       res.render('index');
-      }
-    });
-});
-
 
 module.exports = router;
