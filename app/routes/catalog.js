@@ -27,7 +27,6 @@ function tokenMiddleware() {
 
 router.get('/:categoryID',tokenMiddleware(), function(req,res){
   let categoryID = req.params.categoryID;
-  console.log(categoryID);
   let query = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.Descricao =' + '\'' + categoryID + '\'';
 
   let options = {

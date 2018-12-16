@@ -9,12 +9,14 @@ sudo apt install npm
 nodejs -v 
 
 ```
+### Install Mongodb
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/#install-mongodb-community-edition-using-deb-packages
 
 ### Run app
 ```
 cd app
 npm install
-npm install nodemon -g --save
+sudo service mongod start
 npm start
 
 ```

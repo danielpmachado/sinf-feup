@@ -25,16 +25,6 @@ function tokenMiddleware() {
   }
 }
 
-/**
- * Example
- * var context = {
- *  Artigo: 'A0001',
- *  Descricao: 'Iphone with 256 GB...',
- *  PVP1: 1500,
- *  Modelo: 'Iphone X',
- *  Marca: 'Apple'
- * }
- */
 router.get('/page',tokenMiddleware(), function(req,res){
   var productID = req.query.productID;
   let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
@@ -56,7 +46,6 @@ router.get('/page',tokenMiddleware(), function(req,res){
       var context = body.DataSet.Table[0];
       if(context != null)
         context.Artigo = productID;
-      console.log(context);
       res.render('product', context);
     }
   });

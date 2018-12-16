@@ -6,6 +6,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 
+// Authentication
+var session = require('express-session');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongo = require('mongodb');
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/tech4u');
+var db = mongoose.connection;
+
+// Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
@@ -30,10 +41,22 @@ app.set('view engine', 'hbs');
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
 app.use('/', routes);
 
 app.use('/users', users);
@@ -42,6 +65,7 @@ app.use('/product', product);
 app.use('/cart', cart);
 app.use('/catalog', catalog);
 app.use('/admin', admin);
+
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
