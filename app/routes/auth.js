@@ -2,7 +2,6 @@ var express = require('express');
 var passport = require('passport');
 var request = require('request');
 var router = express.Router();
-
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
@@ -70,7 +69,7 @@ router.post('/register',tokenMiddleware(), function(req, res) {
         return;
       } else {
         passport.authenticate('local')(req, res, function () {
-          res.redirect('/user');
+          res.redirect('/user/profile');
         }) 
       }
     });
@@ -109,9 +108,9 @@ passport.use(new LocalStrategy(
 ));
 
 router.post('/login',
-passport.authenticate('local', { successRedirect: '/users', failureRedirect: '/'}),
+passport.authenticate('local'),
 	function (req, res) {
-		res.redirect('/user');
+		res.redirect('/user/profile/' + req.user.id);
 	});
 
 router.get('/logout', function (req, res) {

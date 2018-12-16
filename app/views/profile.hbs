@@ -3,15 +3,15 @@
 		<div class="col-md-3">
           <div class="profile-sidebar">
                 <div class="profile-user-pic">
-                    <img src="../images/default.png" alt="" class="img-fluid">
+                    <img src="/images/default.png" alt="" class="img-fluid">
                 </div>
                 <div class="profile-user-name">
-                    {{Nome}}
+                    {{client.Nome}}
                 </div>
                 <div class="profile-user-menu">
                     <ul class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        <li><a data-toggle="pill" href="#overview"><i class="fa fa-user"></i>Overview</a></li>
-                        <li class="active"><a data-toggle="pill" href="#history"><i class="fa fa-history"></i>History </a></li>
+                        <li  class="active"><a data-toggle="pill" href="#overview"><i class="fa fa-user"></i>Overview</a></li>
+                        <li><a data-toggle="pill" href="#history"><i class="fa fa-history"></i>History </a></li>
                         <li><a data-toggle="pill" href="#history"><i class="fa fa-cogs"></i>Settings </a></li>
                     </ul>
                 </div>
@@ -22,10 +22,12 @@
                     <div class="card fav-card">
             <div class="card-header bg-dark text-light">Personal Info</div>
                                         <div class="card-body">
-                                                <a> Username </a> <p>{{Nome}}</p>
-                                                <a> Address </a> <p>{{Fac_Mor}}</p>
-                                                <a> City </a> <p>{{Fac_Local}}</p>
-                                                <a> Tax Identification Number </a> <p> {{NumContrib}} </p>
+                                                <a> Name </a> <p>{{client.Nome}}</p>
+                                                <a> Email </a> <p>{{email}}</p>
+                                                <a> Address </a> <p>{{client.Fac_Mor}}</p>
+                                                <a> City </a> <p>{{client.Fac_Local}}</p>
+                                                <a> ZIP </a> <p>{{client.Fac_Cp}}</p>
+                                                <a> Tax Identification Number </a> <p> {{client.NumContrib}} </p>
                                                 <a> Password</a> <p> ********** </p>
                                     </div>
                             </div>

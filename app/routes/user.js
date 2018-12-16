@@ -2,11 +2,7 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-/* GET user page. */
-router.get('/', function(req, res) {
-    res.render('user');
-  });
-
+var User = require('../models/user');
 
 function tokenMiddleware() {
   return (req, res, next) => {
@@ -31,15 +27,10 @@ function tokenMiddleware() {
   }
 }
 
-/*
-* Error in var context = body.DataSet.Table[0];
-* Running on index.js
-*/
 
-
-/* 
-router.get('/:userID',tokenMiddleware(), function(req,res){
-  let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib, Pais, Moeda FROM Clientes WHERE Clientes.Cliente=' + '\'' + req.params.userID + '\'';
+router.get('/profile/:userID',tokenMiddleware(), function(req,res){
+  let userID = req.params.userID;
+  let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib FROM Clientes WHERE Clientes.Cliente=' + '\'' + userID + '\'';
 
   let options = {
     method: 'post',
@@ -54,11 +45,14 @@ router.get('/:userID',tokenMiddleware(), function(req,res){
       console.error(error);
       return;
     } else {
-      var context = body.DataSet.Table[0];
-      res.render('user', context);
+      User.getUserById(userID, function (err, user) {
+        var client = body.DataSet.Table[0];
+        var email = user.email;
+        res.render('profile', {client, email} );
+      });
     }
   });
-});*/
+});
 
 
 

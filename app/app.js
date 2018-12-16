@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/tech4u');
 
 // Routes
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
 var auth = require('./routes/auth');
 var product = require('./routes/product');
 var cart = require('./routes/cart');
@@ -62,7 +62,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', routes);
-app.use('/user', users);
+app.use('/user', user);
 app.use('/auth', auth);
 app.use('/product', product);
 app.use('/cart', cart);
