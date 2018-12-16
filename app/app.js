@@ -62,7 +62,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/', routes);
-app.use('/users', users);
+app.use('/user', users);
 app.use('/auth', auth);
 app.use('/product', product);
 app.use('/cart', cart);

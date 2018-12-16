@@ -4,7 +4,10 @@ var router = express.Router();
 
 /* GET cart page. */
 router.get('/', function(req, res) {
-    res.render('cart');
+    var cart = JSON.parse(req.cookies['cart']);
+    newcart = {'cart': cart}
+    console.log(newcart);
+    res.render('cart', newcart);
   });
 
 module.exports = router;

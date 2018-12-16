@@ -70,7 +70,7 @@ router.post('/register',tokenMiddleware(), function(req, res) {
         return;
       } else {
         console.log(response);
-        res.redirect('/users');
+        res.redirect('/user');
       }
     });
   });
@@ -111,7 +111,7 @@ passport.use(new LocalStrategy(
 router.post('/login',
 passport.authenticate('local', { successRedirect: '/users', failureRedirect: '/'}),
 	function (req, res) {
-		res.redirect('/users');
+		res.redirect('/user');
 	});
 
 router.get('/logout', function (req, res) {

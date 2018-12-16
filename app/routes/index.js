@@ -61,8 +61,8 @@ router.get('/user/:userID',tokenMiddleware(), function(req,res){
   });
 });
 
-router.get('/user/orders:userID',tokenMiddleware(), function(req,res){
-  let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib, Pais, Moeda FROM Clientes WHERE Clientes.Cliente=' + '\'' + req.params.userID + '\'';
+router.get('/user/:userID/orders',tokenMiddleware(), function(req,res){
+  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc  WHERE cd.Entidade=' + '\'' + req.params.userID + '\'';
 
   let options = {
     method: 'post',
@@ -78,7 +78,7 @@ router.get('/user/orders:userID',tokenMiddleware(), function(req,res){
       return;
     } else {
       var context = body.DataSet.Table[0];
-      res.render('user', context);
+      res.render('user_orders', context);
     }
   });
 });
