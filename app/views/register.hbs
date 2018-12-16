@@ -1,32 +1,35 @@
 <div class="sign container-fluid">
 	<h4 class="p-2">Sign up</h4>
-			<form>
+			<form action="/auth/register" method="post">
 				<div class="form-group">
-						<input type="text" class="form-control" id="inputUsename2" placeholder="Username">
+						<input type="text" class="form-control" name="name" placeholder="Name" required>
 				</div>
 				<div class="form-group">
-						<input type="text" class="form-control" id="inputPassword2" placeholder="Password">
+						<input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
 				</div>
 				<div class="form-group">
-						<input type="text" class="form-control" id="inputPassword3" placeholder="Confirm Password">
+						<input type="password" id="confirm_passowrd" class="form-control" placeholder="Confirm Password" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="inputEmail" placeholder="Email">
+					<input type="email" class="form-control" name="email" placeholder="Email" required>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="inputAddress" placeholder="Address">
+					<input type="text" class="form-control" name="address" placeholder="Address">
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-8">
-						<input type="text" class="form-control" id="inputCity" placeholder="City">
+						<input type="text" class="form-control" name="city" placeholder="City">
 					</div>
 					<div class="form-group col-md-4">
-						<input type="text" class="form-control" id="inputZip" placeholder="Zip">
+						<input type="text" class="form-control" name="zip" placeholder="Zip">
 					</div>
 				</div>
 				<div class="form-group">
+					<input type="text" class="form-control" name="nif" placeholder="NIF">
+				</div>
+				<div class="form-group">
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
+							<input class="form-check-input" type="checkbox" id="invalidCheck2" required>
 							<label class="form-check-label" for="invalidCheck2">
 								Agree to terms and conditions
 							</label>
@@ -38,3 +41,19 @@
 			</form>
 	</div>
 </div>
+
+<script>
+    var password = document.getElementsById("password")[0]
+    , confirm_password = document.getElementsById("confirm_password")[0];
+
+    function validatePassword(){
+    if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
