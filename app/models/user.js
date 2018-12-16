@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
 var bcrypt = require('bcryptjs');
+
+autoIncrement.initialize(mongoose);
 
 // User Schema
 var UserSchema = mongoose.Schema({
@@ -15,6 +18,7 @@ var UserSchema = mongoose.Schema({
 	}
 });
 
+UserSchema.plugin(autoIncrement.plugin, 'User');
 var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.createUser = function(newUser, callback){

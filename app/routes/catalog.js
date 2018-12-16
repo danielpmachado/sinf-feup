@@ -18,6 +18,7 @@ function tokenMiddleware() {
         console.error(error);
         return;
       } else {
+        console.log(body);
         res.token = JSON.parse(body).access_token;
         next();
       }

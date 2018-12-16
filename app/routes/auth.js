@@ -1,56 +1,79 @@
 var express = require('express');
-var router = express.Router();
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+var request = require('request');
+var router = express.Router();
 
+var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
 function tokenMiddleware() {
-    return (req, res, next) => {
-      let params ={
-        username: 'FEUP',
-        password: 'qualquer1',
-        company: 'TECH4U',
-        instance: 'DEFAULT',
-        grant_type: 'password',
-        line: 'professional'
-      };
-  
-      request.post({url: 'http://localhost:2018/WebApi/token', form:params}, (error, response, body) => {
-        if (error) {
-          console.error(error);
-          return;
-        } else {
-          res.token = JSON.parse(body).access_token;
-          next();
-        }
-      });
-    }
+  return (req, res, next) => {
+    let params ={
+      username: 'FEUP',
+      password: 'qualquer1',
+      company: 'TECH4U',
+      instance: 'DEFAULT',
+      grant_type: 'password',
+      line: 'professional'
+    };
+
+    request.post({url: 'http://localhost:2018/WebApi/token', form:params}, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+        res.token = JSON.parse(body).access_token;
+        next();
+      }
+    });
   }
+}
 
 router.get('/register/form', function(req, res) {
     res.render('register');
 });
 
-router.post('/register', function(req, res) {
-  var name = req.body.name;
-	var email = req.body.email;
-	var password = req.body.password;
+router.post('/register',tokenMiddleware(), function(req, res) {
 
   var newUSer = new User({
-       name: name, 
-       email: email, 
-       password:  password
+     name: req.body.name,
+     email: req.body.email,
+     password: req.body.password
   });
 
   User.createUser(newUSer, function(err,user){
     if(err) throw err;
-    console.log(user);
-  });
 
-  res.redirect('/users');
+    let data=  {
+      Cliente: user.id,
+      Nome:  req.body.name,
+      Morada:  req.body.address,
+      Localidade:  req.body.city,
+      CodigoPostal:  req.body.zip,
+      NumContribuinte:  req.body.nif,
+      CondPag: 2,
+      Moeda: "EUR"
+    };
   
+    let options = {
+      method: 'post',
+      body: data,
+      json: true,
+      url: 'http://localhost:2018/WebApi/Base/Clientes/Actualiza',
+      headers: {'Authorization': 'Bearer ' + res.token}
+    };
+  
+    request(options, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+        console.log(response);
+        res.redirect('/users');
+      }
+    });
+  });
 });
 
 passport.serializeUser(function (user, done) {

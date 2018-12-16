@@ -6,23 +6,24 @@
     "start": "nodemon -L ./bin/www"
   },
   "dependencies": {
+    "bcryptjs": "*",
     "body-parser": "~1.0.0",
     "cookie-parser": "~1.0.1",
     "debug": "~0.7.4",
     "express": "~4.0.0",
     "express-handlebars": "^3.0.0",
-    "js-cookie": "^2.2.0",
-    "morgan": "~1.0.0",
-    "nodemon": "^1.18.7",
-    "request": "^2.88.0",
-    "static-favicon": "~1.0.0",
-    "bcryptjs": "*",
     "express-messages": "*",
     "express-session": "*",
+    "js-cookie": "^2.2.0",
     "mongodb": "*",
     "mongoose": "*",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "~1.0.0",
+    "nodemon": "^1.18.7",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "request": "^2.88.0",
+    "static-favicon": "~1.0.0"
   }
 }

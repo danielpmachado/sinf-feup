@@ -9,12 +9,10 @@ var hbs = require('express-handlebars');
 // Authentication
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/tech4u');
-var db = mongoose.connection;
+
 
 // Routes
 var routes = require('./routes/index');
