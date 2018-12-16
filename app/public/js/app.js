@@ -513,5 +513,4 @@ function changeProfilePill(pill){
 
 }
 
-
 addEventListeners();

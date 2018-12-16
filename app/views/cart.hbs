@@ -39,13 +39,14 @@
                                 <p class="float-left mb-0" style="padding-top: 5px">Shopping cart</p>
                             </div>
                             <div class="card-body">
+                                {{#each cart}}
                                 <div class="product-order" data-id="2">
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-2 text-center float-left">
                                             <img class="img-responsive" src="/images/products/MacBook.png" alt="prewiew" width="120" height="80">
                                         </div>
                                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
-                                            <a href="/products/2" class="product-name"><strong>MacBook Pro</strong></a>
+                                            <a href="/products/2" class="product-name"><strong>{{id}}</strong></a>
                                             <p>1832.99 €</p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-2 float-right">
@@ -55,7 +56,7 @@
 
                                             <div class="quantity">
                                                 <input id="quantity" type="button" value="+" class="plus">
-                                                <input value="1" class="qty" size="4" disabled="">
+                                                <input value="{{count}}" class="qty" size="4" disabled="">
                                                 <input id="quantity" type="button" value="-" class="minus">
                                             </div>
 
@@ -63,62 +64,7 @@
                                     </div>
                                     <hr>
                                 </div>
-
-                                <div class="product-order" data-id="8">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-2 text-center float-left">
-                                            <img class="img-responsive" src="/images/products/hp_pavilon.png" alt="prewiew" width="120" height="80">
-                                        </div>
-
-                                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
-                                            <a href="/products/8" class="product-name"><strong>Portátil Híbrido 14' HP Pavilion X360 14</strong></a>
-                                            <p>849.99 €</p>
-                                        </div>
-
-                                        <div class="col-12 col-sm-12 col-md-2 float-right">
-
-                                            <button id="delete" type="button" class="btn btn-outline-danger float-right">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-
-                                            <div class="quantity">
-                                                <input id="quantity" type="button" value="+" class="plus">
-                                                <input value="2" class="qty" size="4" disabled="">
-                                                <input id="quantity" type="button" value="-" class="minus">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-
-                                <div class="product-order" data-id="3">
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-2 text-center float-left">
-                                            <img class="img-responsive" src="/images/products/huawei-p20-pro.png" alt="prewiew" width="120" height="80">
-                                        </div>
-
-                                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
-                                            <a href="/products/3" class="product-name"><strong>Huawei P20 Pro</strong></a>
-                                            <p>788.99 €</p>
-                                        </div>
-
-                                        <div class="col-12 col-sm-12 col-md-2 float-right">
-
-                                            <button id="delete" type="button" class="btn btn-outline-danger float-right">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>
-                                            </button>
-
-                                            <div class="quantity">
-                                                <input id="quantity" type="button" value="+" class="plus">
-                                                <input value="1" class="qty" size="4" disabled="">
-                                                <input id="quantity" type="button" value="-" class="minus">
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
+                                {{/each}}
                             </div>
                             <div class="card-footer">
                                 <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn">Checkout</button>
