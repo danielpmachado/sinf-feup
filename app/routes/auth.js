@@ -38,7 +38,7 @@ router.post('/register',tokenMiddleware(), function(req, res) {
 
   var newUSer = new User({
      name: req.body.name,
-     email: req.body.email,
+     email: req.body.username,
      password: req.body.password
   });
 
@@ -69,8 +69,9 @@ router.post('/register',tokenMiddleware(), function(req, res) {
         console.error(error);
         return;
       } else {
-        console.log(response);
-        res.redirect('/user');
+        passport.authenticate('local')(req, res, function () {
+          res.redirect('/user');
+        }) 
       }
     });
   });
@@ -92,7 +93,6 @@ passport.use(new LocalStrategy(
     User.getUserByEmail(username, function (err, user) {
 			if (err) throw err;
 			if (!user) {
-        console.log("fds");
 				return done(null, false, { message: 'Invalid email/password combination' });
 			}
 
