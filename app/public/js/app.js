@@ -190,8 +190,38 @@ function sendAddCartRequest(button){
   let id = button.closest('div.product').getAttribute('data-id');
 
   if(!button.disabled)
-    sendAjaxRequest('post', '/cart/products/' + id + "/add",null,addCartHandler);
+    addProductToCard(id);
 
+}
+
+function addProductToCard(id_product) {
+  var cart = Cookies.getJSON('cart');
+  if(cart == null){
+    let product = {
+      id: id_product,
+      count: 1
+    }
+    cart = [product];
+    Cookies('cart', cart);
+  }
+  else{
+    let found = false
+    cart.forEach(function(x) {
+      if(x.id == id_product){
+        found = true;
+        x.count++;
+      }
+    })
+    if(!found) {
+      let product = {
+        id: id_product,
+        count: 1
+      }
+      cart.push(product);
+    }
+    Cookies.set('cart', cart);
+  }
+  return cart;
 }
 
 function  addCartHandler(){
