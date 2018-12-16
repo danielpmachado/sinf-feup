@@ -56,16 +56,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Global Vars
+app.use(function (req, res, next) {
+    res.locals.user = req.user || null;
+    next();
+  });
+
 // Routes
 app.use('/', routes);
-
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/product', product);
 app.use('/cart', cart);
 app.use('/catalog', catalog);
 app.use('/admin', admin);
-
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

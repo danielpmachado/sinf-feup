@@ -91,5 +91,10 @@ passport.authenticate('local', { successRedirect: '/users', failureRedirect: '/'
 		res.redirect('/users');
 	});
 
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
+  
 
 module.exports = router;
