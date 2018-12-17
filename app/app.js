@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
+var helpers = require('handlebars-helpers');
+var comparison = helpers.comparison();
 
 // Authentication
 var session = require('express-session');
@@ -47,7 +49,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'secret',
     saveUninitialized: true,
-    resave: true
+    resave: true,
+    cookie: { maxAge: 60 * 60 * 1000 }
 }));
 
 // Passport init

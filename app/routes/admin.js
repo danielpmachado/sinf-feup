@@ -2,6 +2,8 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
+var User = require('../models/user');
+
 function tokenMiddleware() {
 	return (req, res, next) => {
 		let params = {
@@ -25,24 +27,11 @@ function tokenMiddleware() {
 	}
 }
 
-router.get('/', tokenMiddleware(), function (req, res) {
-	let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib, Pais, Moeda FROM Clientes';
-
-	let options = {
-		method: 'post',
-		body: query,
-		json: true,
-		url: 'http://localhost:2018/WebApi/Administrador/Consulta',
-		headers: { 'Authorization': 'Bearer ' + res.token }
-	};
-
-	request(options, (error, response, body) => {
-		if (error) {
-			console.error(error);
-			return;
-		} else {
-			res.render('list_users');
-		}
+router.get('/manage_users', tokenMiddleware(), function (req, res) {
+	User.find({}, function(err, users) {
+		let context = users;
+		console.log(context[0].name);
+		res.render('list_users', {users});
 	});
 });
 

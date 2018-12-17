@@ -17,15 +17,27 @@
       <li class="nav-item "></li>
       <li class="nav-item ">
         {{#if user}}
-        <div class="dropdown show ">
-            <a  id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
-                <i class="fa fa-user"></i> {{user.name}}
-            </a>
-            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item align-left" href="/user/profile/{{user.id}}">Profile</a>
-                <a class="dropdown-item" href="/auth/logout">Logout</a>
-            </div>
-        </div>
+            {{#if (compare user.id "==" 0)}}
+                <div class="dropdown show ">
+                    <a  id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
+                        <i class="fa fa-user"></i> Admin
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item align-left" href="/">Manage Users</a>
+                        <a class="dropdown-item" href="/">Logout</a>
+                    </div>
+                </div>
+                {{else}}
+                <div class="dropdown show ">
+                    <a  id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
+                        <i class="fa fa-user"></i> {{user.name}}
+                    </a>
+                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item align-left" href="/user/profile/{{user.id}}">Profile</a>
+                        <a class="dropdown-item" href="/auth/logout">Logout</a>
+                    </div>
+                </div>
+            {{/if}}
         {{else}}
         <div class="dropdown show ">
             <a id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

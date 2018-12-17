@@ -35,17 +35,6 @@ function sendAjaxRequest(method, url, data, handler) {
 function addEventListeners() {
 
 // ---------------------------------
-//            PROFILE
-//----------------------------------
-
-  let profile_button = document.querySelectorAll(".profile-user-menu li");
-  [].forEach.call(profile_button, function(change) {
-    change.onclick = function(){
-      changeProfilePill(this);
-    }
-  });
-
-// ---------------------------------
 //            PRODUCT
 //----------------------------------
 
@@ -330,5 +319,12 @@ function changeProfilePill(pill){
   pill.classList.add('active');
 
 }
+
+let profile_button = document.querySelectorAll(".profile-user-menu li");
+[].forEach.call(profile_button, function(change) {
+  change.onclick = function(){
+    changeProfilePill(this);
+  }
+});
 
 addEventListeners();

@@ -18,7 +18,6 @@ function tokenMiddleware() {
         console.error(error);
         return;
       } else {
-        console.log(body);
         res.token = JSON.parse(body).access_token;
         next();
       }
@@ -44,6 +43,7 @@ router.get('/:categoryID',tokenMiddleware(), function(req,res){
         return;
       } else {
         var products = body.DataSet.Table;
+        console.log(products);
         res.render('catalog',{category: 'Computers', products});
       }
     });

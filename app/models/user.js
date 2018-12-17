@@ -8,18 +8,22 @@ autoIncrement.initialize(mongoose);
 var UserSchema = mongoose.Schema({
 	email: {
 		type: String,
-		index: true
 	},
 	name: {
 		type: String
 	},
 	password: {
 		type: String
+	},
+	permission:{
+		type: String
 	}
 });
 
-UserSchema.plugin(autoIncrement.plugin, 'User');
+
+UserSchema.plugin(autoIncrement.plugin,'User');
 var User = module.exports = mongoose.model('User', UserSchema);
+
 
 module.exports.createUser = function(newUser, callback){
 	bcrypt.genSalt(10, function(err, salt) {
@@ -45,3 +49,4 @@ module.exports.comparePassword = function(candidatePassword, hash, callback){
     	callback(null, isMatch);
 	});
 }
+
