@@ -12,7 +12,7 @@ function tokenMiddleware() {
     let params ={
       username: 'FEUP',
       password: 'qualquer1',
-      company: 'BELAFLOR',
+      company: 'TECH4U',
       instance: 'DEFAULT',
       grant_type: 'password',
       line: 'professional'

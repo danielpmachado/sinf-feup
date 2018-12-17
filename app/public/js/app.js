@@ -224,6 +224,35 @@ function addProductToCard(id_product) {
   return cart;
 }
 
+function decreaseProductToCard(id_product) {
+  var cart = Cookies.getJSON('cart');
+  if(cart != null){
+    cart.forEach(function(x) {
+      if(x.id == id_product){
+        x.count--;
+        if(x.count == 0){
+          cart.splice(cart.indexOf(x), 1);
+        }
+      }
+    })
+    Cookies.set('cart', cart);
+  }
+  return cart;
+}
+
+function removeProductFromCard(id_product) {
+  var cart = Cookies.getJSON('cart');
+  if(cart != null){
+    cart.forEach(function(x) {
+      if(x.id == id_product){
+        cart.splice(cart.indexOf(x), 1);
+      }
+    })
+    Cookies.set('cart', cart);
+  }
+  return cart;
+}
+
 function  addCartHandler(){
   let product = JSON.parse(this.responseText);
   let button = document.querySelector('div.product[data-id="' + product.id + '"] #cart');
@@ -238,18 +267,17 @@ function sendUpdateQuantityRequest(button){
   let value = button.value;
 
   if(value == "+")
-    sendAjaxRequest('post', '/cart/products/' + id + "/inc",null,updateQuantityHandler);
+    addProductToCard(id);
 
   if(value == "-")
-    sendAjaxRequest('post', '/cart/products/' + id + "/sub",null,updateQuantityHandler);
+    decreaseProductToCard(id);
 
 }
 
 function sendDeleteOrderRequest(button){
   let id = button.closest('div.product-order').getAttribute('data-id');
 
-  sendAjaxRequest('post', '/cart/products/' + id + '/remove', null, deleteOrderHandler);
-
+  removeProductFromCard(id);
 }
 
 function deleteOrderHandler(){
