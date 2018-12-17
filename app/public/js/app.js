@@ -224,12 +224,27 @@ function addProductToCard(id_product) {
   return cart;
 }
 
+function increaseProductToCard(id_product){
+  var cart = Cookies.getJSON('cart');
+  if(cart != null){
+    cart.forEach(function(x) {
+      if(x.id == id_product){
+        x.count++;
+        //updateQuantityHandler(id_product, x.count, 'add');
+      }
+    })
+    Cookies.set('cart', cart);
+  }
+  return cart;
+}
+
 function decreaseProductToCard(id_product) {
   var cart = Cookies.getJSON('cart');
   if(cart != null){
     cart.forEach(function(x) {
       if(x.id == id_product){
         x.count--;
+        //updateQuantityHandler(id_product, x.count, 'sub');
         if(x.count == 0){
           cart.splice(cart.indexOf(x), 1);
         }
@@ -267,7 +282,7 @@ function sendUpdateQuantityRequest(button){
   let value = button.value;
 
   if(value == "+")
-    addProductToCard(id);
+    increaseProductToCard(id);
 
   if(value == "-")
     decreaseProductToCard(id);
@@ -312,16 +327,11 @@ function deleteReviewHandler(){
 
 }
 
-function updateQuantityHandler(){
-  if (this.status != 200) window.location = '/';
+function updateQuantityHandler(id, quantity, op){
 
-  let response = JSON.parse(this.responseText);
-  let product = response['product'];
-  let quantity = response['quantity'];
-  let op = response['op'];
-
-  let cart_quantity =document.querySelector('div.product-order[data-id="' + product.id + '"] .qty');
-  let conf_quantity = document.querySelector('div.product-conf[data-id="' + product.id + '"] .qty');
+  let cart_quantity =document.querySelector('div.product-order[data-id="' + id + '"] .qty');
+  let conf_quantity = document.querySelector('div.product-conf[data-id="' + id + '"] .qty');
+  let price = document.querySelector('div.product-conf[data-id="' + id + '"] .price').innerText;
   let price_cart =document.querySelector('div.shopping-cart .price');
   let price_nav = document.querySelector('#nav_cart');
   let price_conf =document.querySelector('#total-conf');
@@ -334,11 +344,11 @@ function updateQuantityHandler(){
 
   let price =0;
   if(op== 'add')
-    price = Math.round((+price_cart.innerHTML + +product.price) * 100) / 100 ;
+    price = Math.round((+price_cart.innerHTML + +price) * 100) / 100 ;
   
 
   if(op== 'sub')
-    price = Math.round((+price_cart.innerHTML - +product.price) * 100) / 100 ;
+    price = Math.round((+price_cart.innerHTML - +price) * 100) / 100 ;
   
   if(price >0){
     price_cart.innerHTML = price;
