@@ -20,5 +20,15 @@ sudo service mongod start
 npm start
 
 ```
-
 localhost:3000
+
+
+### Manage Mongodb database
+```
+mongo
+use tech4u
+db.users.find()
+db.users.remove({})
+db.dropDatabase()
+```
+
