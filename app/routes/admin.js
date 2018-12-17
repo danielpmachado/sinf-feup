@@ -35,6 +35,47 @@ router.get('/manage_users', tokenMiddleware(), function (req, res) {
 	});
 });
 
+router.get('/best_selling_products', function(req, res) {
+	res.render('best_sellers');
+});
+
+router.get('/top_category', function(req, res) {
+	res.render('top_category');
+});
+
+router.get('/manage_orders', function(req, res) {
+	res.render('manage_orders');
+});
+
+
+/*
+/*
+router.get('/best_selling_products',tokenMiddleware(), function(req,res){
+	let userID = req.params.userID;
+	let query = 'SELECT TOP(NUM) Artigo, Descricao, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao ORDER BY SUM(Quantidade) DESC';
+  
+	let options = {
+	  method: 'post',
+	  body: query,
+	  json: true,
+	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+	  headers: {'Authorization': 'Bearer ' + res.token}
+	};
+  
+	request(options, (error, response, body) => {
+	  if (error) {
+		console.error(error);
+		return;
+	  } else {
+		var products = body.DataSet.Table;
+        console.log(products);
+        res.render('catalog',{category: 'Computers', products}); // change to best sellers
+	  }
+	});
+  });
+
+
+
 /*
 router.get('/add_product', tokenMiddleware(), function (req, res) {
 
