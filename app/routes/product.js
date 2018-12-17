@@ -27,7 +27,7 @@ function tokenMiddleware() {
 
 router.get('/page',tokenMiddleware(), function(req,res){
   var productID = req.query.productID;
-  let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
+  let query = 'SELECT a.Artigo, a.Descricao, a.Observacoes, a.Peso, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
 
   let options = {
     method: 'post',

@@ -69,7 +69,7 @@ router.post('/register',tokenMiddleware(), function(req, res) {
         return;
       } else {
         passport.authenticate('local')(req, res, function () {
-          res.redirect('/user/profile');
+          res.redirect('/');
         }) 
       }
     });
