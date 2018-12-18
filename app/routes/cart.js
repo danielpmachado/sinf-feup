@@ -61,7 +61,8 @@ router.get('/', tokenMiddleware(), function(req, res) {
         }
       });
     });
-  }
+  } else
+    res.render('cart', null);
 });
 
 module.exports = router;
