@@ -27,7 +27,17 @@ function tokenMiddleware() {
 	}
 }
 
-router.get('/manage_users', tokenMiddleware(), function (req, res) {
+function adminMiddleware() {
+	return (req, res, next) => {
+		if(req.user.id == 0){
+			return next();
+		} else {
+			res.redirect('/');
+		}
+	}
+}
+
+router.get('/manage_users', adminMiddleware(), function (req, res) {
 	User.find({}, function(err, users) {
 		let context = users;
 		console.log(context[0].name);
@@ -35,15 +45,15 @@ router.get('/manage_users', tokenMiddleware(), function (req, res) {
 	});
 });
 
-router.get('/best_selling_products', function(req, res) {
+router.get('/best_selling_products',adminMiddleware(), function(req, res) {
 	res.render('best_sellers');
 });
 
-router.get('/top_category', function(req, res) {
+router.get('/top_category',adminMiddleware(), function(req, res) {
 	res.render('top_category');
 });
 
-router.get('/manage_orders', function(req, res) {
+router.get('/manage_orders',adminMiddleware(), function(req, res) {
 	res.render('manage_orders');
 });
 
