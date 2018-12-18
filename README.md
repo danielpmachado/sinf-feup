@@ -31,7 +31,10 @@ db.users.remove({})
 db.dropDatabase()
 ```
 
-- [ ] Retificar estrelas de score
+### To Do
+
+
+- [x] Retificar estrelas de score
 - [ ] Mudar pagina do historico
 - [ ] Client Orders - profile page 
 - [ ] Criar página - Orders
