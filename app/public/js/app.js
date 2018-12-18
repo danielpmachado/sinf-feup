@@ -101,6 +101,8 @@ function addEventListeners() {
   let final_step = document.querySelector('#step-3-next');
   if(final_step!=null)
   final_step.onclick = function(){
+    $('#step-4-link').removeClass('disabled');
+    $('#step-4-link').tab('show')
     makeFinalStep(this);
   }
 

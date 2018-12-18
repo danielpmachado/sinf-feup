@@ -4,34 +4,29 @@
             <ul class="nav nav-tabs">
                 <div class="liner"></div>
                 <li rel-index="0" class="active">
-                    <a href="#step-1" class="btn" aria-controls="step-1" role="tab" data-toggle="tab">
+                    <a id="step-1-link" href="#step-1" class="btn nav-link" aria-controls="step-1" role="tab" data-toggle="tab">
                         <span> 1  </span>
-                        </a><a>  Cart </a>
-                    
+                        </a><a>  Cart </a>                    
                 </li>
                 <li rel-index="1">
-                    <a href="#step-2" class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">
+                    <a id="step-2-link" href="#step-2" class="btn disabled nav-link" aria-controls="step-2" role="tab" data-toggle="tab" aria-selected="false">
                         <span> 2  </span>
                         </a><a> Expedition </a>
-
-                    
                 </li>
                 <li rel-index="2">
-                    <a href="#step-3" class="btn disabled" aria-controls="step-3" role="tab" data-toggle="tab">
+                    <a id="step-3-link" href="#step-3" class="btn disabled nav-link" aria-controls="step-3" role="tab" data-toggle="tab" aria-selected="false">
                         <span> 3 </span>
                         </a><a> Payment </a>
-                    
                 </li>
                 <li rel-index="3">
-                    <a id="step-4-link" href="#step-4" class="btn disabled" aria-controls="step-4" role="tab" data-toggle="tab">
+                    <a id="step-4-link" href="#step-4" class="btn disabled nav-link" aria-controls="step-4" role="tab" data-toggle="tab" aria-selected="false">
                         <span> 4</span>
                         </a><a> Confirmation</a>
-                    
                 </li>
             </ul>
         </div>          
         <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="step-1">
+            <div role="tabpanel" class="tab-pane fade show active" id="step-1" aria-labelledby="step-1-link">
                 <div class="col-md-17">
                     <div class="container">
                         <div class="card shopping-cart">
@@ -47,7 +42,7 @@
                                         </div>
                                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
                                             <a href="/products/2" class="product-name"><strong>{{ Descricao }}</strong></a>
-                                            <p class="price">{{ PVP1 }} €</p>
+                                            <p><b class="price">{{ PVP1 }}</b> €</p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-2 float-right">
                                             <button id="delete" type="button" class="btn btn-outline-danger float-right">
@@ -67,16 +62,26 @@
                                 {{/each}}
                             </div>
                             <div class="card-footer">
-                                <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn">Checkout</button>
+                                <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn" onclick="$('#step-2-link').removeClass('disabled'); $('#step-2-link').tab('show')">Checkout</button>
                                 <div class=" pt-2">
-                                    Total price: <b class="price">4321.96</b> €
+                                    Total price: <b id="totalPrice"></b> €
                                 </div>
+                                <script>
+                                    let prices = document.querySelectorAll('b.price');
+                                    let quantities = document.querySelectorAll('input.qty');
+                                    let totalPrice = 0;
+                                    prices.forEach(function(element, index, arr) {
+                                        // Falta multiplicar pela quantidade
+                                        totalPrice += parseFloat(element.innerText) * quantities[index].value;
+                                    });
+                                    document.querySelector('#totalPrice').innerText = totalPrice;
+                                </script>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="step-2">
+            <div role="tabpanel" class="tab-pane fade" id="step-2" aria-labelledby="step-2-link">
                 <div class="container-fluid" style="width:70%;">
                     <div class="card shopping-cart">
                         <div class="card-header bg-dark text-light">Expedition Info</div>
@@ -100,19 +105,19 @@
 
                                 <div class="form-group">
                                     <a> Contact </a>
-                                    <input id="contact" type="text" class="form-control" name="contact" value="daniel.pmachado28@gmail.com" required="">
+                                    <input id="contact" type="text" class="form-control" name="contact" value="default@gmail.com" required="">
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer ">
-                            <button id="step-2-next" type="submit" class="btn btn-outline-dark float-right">
+                            <button id="step-2-next" type="submit" class="btn btn-outline-dark float-right" onclick="$('#step-3-link').removeClass('disabled'); $('#step-3-link').tab('show')">
                                 Next
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="step-3">
+            <div role="tabpanel" class="tab-pane fade" id="step-3" aria-labelledby="step-3-link">
                 <div class="container-fluid" style="width:60%;">
                     <div class="card shopping-cart">
                         <div class="card-header bg-dark text-light">Payment</div>
@@ -139,7 +144,7 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="step-4">
+            <div role="tabpanel" class="tab-pane fade" id="step-4" aria-labelledby="step-4-link">
                 <div class="container-fluid" style="width:70%;">
                     <div class="card fav-cart">
                         <div class="card-header bg-dark text-light">Purchase Confirmation</div>
