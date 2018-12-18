@@ -54,6 +54,48 @@ router.get('/profile/:userID',tokenMiddleware(), function(req,res){
   });
 });
 
+router.post('/update/:userID',tokenMiddleware(), function(req, res) {
+ 
+    let idUser = req.params.userID;
+    let data=  {
+
+        CodigoTabLog: "Cliente",
+        ChaveLog: "Cliente",
+        Cliente: req.params.userID,
+        Nome: req.body.user,
+        Morada: req.body.address,
+        Localidade: req.body.city,
+        CodigoPostalLocalidade: req.body.city,
+        CodigoPostal: req.body.zip,
+        NumContribuinte: req.body.nif,
+        Moeda: "EUR",
+        EmModoEdicao: true
+
+    };
+
+    console.log(data);
+  
+    let options = {
+      method: 'post',
+      body: data,
+      json: true,
+      url: 'http://localhost:2018/WebApi/Base/Clientes/Actualiza',
+      headers: {'Authorization': 'Bearer ' + res.token}
+    };
+  
+    request(options, (error, response, body) => {
+      if (error) {
+        console.error(error);
+        return;
+      } else {
+            
+        res.redirect('/user/profile/' +  idUser);
+             
+      }
+    });
+ 
+});
+
 
 
 module.exports = router;

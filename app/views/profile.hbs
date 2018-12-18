@@ -180,17 +180,16 @@
                 <div class="card fav-card">
                     <div class="card-header bg-dark text-light">Settings</div>
                     <div class="card-body">
-                        <form form class="form-horizontal" enctype="multipart/form-data" method="POST" action="http://lbaw1753.lbaw-prod.fe.up.pt/users/21/update">
-                            <input type="hidden" name="_token" value="yxYXJHesf3eHToxUzS0YDd4NJ3OOKelzgYRrNTXx">
+                        <form  class="form-horizontal"  method="post" action="/user/update/{{user.id}}">
+                           
                 
                             <div class="form-group">
                                 <a> Username </a>
-                                <input  id="name" type="text" class="form-control" name="username" value="{{client.Nome}}" required autofocus>
+                                <input  id="name" type="text" class="form-control" name="user" value="{{client.Nome}}" required autofocus>
                             </div>
                 
                             <div class="form-group">
-                                <a> Tax Identification Number </a>
-                                <input  id="nif" type="text" class="form-control" name="nif" value="{{client.NumContrib}}" required>
+                                <input  id="nif" type="hidden" class="form-control" name="nif" value="{{client.NumContrib}}" required>
                             </div>
 
                             <div class="form-group">
@@ -212,11 +211,6 @@
                             <div class="form-group">
                                 <a> Email </a>
                                 <input  id="email" type="text" class="form-control" name="email" value="{{email}}" required>
-                            </div>
-
-                            <div class="form-group"> 
-                                <a> Profile Image </a><br>
-                                <input type="file" name="avatar">
                             </div>
                             
                             <div class="form-group float-left">
