@@ -53,10 +53,6 @@ router.get('/top_category',adminMiddleware(), function(req, res) {
 router.get('/manage_orders',adminMiddleware(), function(req, res) {
 	res.render('manage_orders');
 });
-/*
-router.get('/manage_products', function(req, res) {
-	res.render('manage_products');
-});*/
 
 router.get('/ban/:userID',adminMiddleware(),function(req,res){
 	console.log(req.params.userID);
@@ -70,11 +66,9 @@ router.get('/ban/:userID',adminMiddleware(),function(req,res){
 });
 
 
-router.get('/manage_products',tokenMiddleware(), function(req,res){
+router.get('/manage/products',[adminMiddleware(),tokenMiddleware()], function(req,res){
 
-	console.log('test products');
-	
-    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao, a.Observacoes, a.Peso, f.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca INNER JOIN Familias f ON f.Familia=a.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo';
+	let query = 'SELECT a.Artigo, a.Descricao,aa.Armazem, SUM(aa.StkActual) FROM Artigo a INNER JOIN V_INV_ArtigoArmazem aa ON aa.Artigo = a.Artigo  GROUP BY a.Artigo,a.Descricao,aa.Armazem';
  
 	let options = {
 	  method: 'post',
@@ -89,9 +83,8 @@ router.get('/manage_products',tokenMiddleware(), function(req,res){
 		console.error(error);
 		return;
 	  } else {
-		var products = body.DataSet.Table;
-        console.log(products);
-        res.render('manage_products',{products}); 
+			var products = body.DataSet.Table;
+			res.render('admin/manage_products',{products}); 
 	  }
 	});
   });
