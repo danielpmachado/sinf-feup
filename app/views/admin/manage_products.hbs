@@ -1,7 +1,7 @@
 ﻿
 <ol class="p_breadcrumb breadcrumb" style="margin-top:0">
 <li class="breadcrumb-item"><a href="/">Home</a></li>
-<li class="breadcrumb-item active">Manage Users</li>
+<li class="breadcrumb-item active">Manage Products</li>
 </ol>
 <hr>
 
@@ -17,23 +17,20 @@
 
             <div class="uk-slider-container">
                 <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid uk-margin-bottom">
-                    {{#each users}}
-                    <li>
+                   {{#each products}}
+                     <li>
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-media-top">
-                                <img src="../../images/default.png" alt="" >
+                                <img src="../images/products/{{Artigo}}.png" alt="" >
                             </div>
-                            <div class="uk-card-body">
-                                <a class="uk-card-title" href="/user/profile/{{this.id}}" style="text-decoration: none;">{{this.name}}</a>
-                                <p>{{this.email}}</p>
-                                <div class="card-btn">
-                                        <button class="btn  btn-outline-danger  btn-block ban-user-btn" data-toggle="modal" data-target="#banModal" data-id="{{this.id}}">Ban User</button>
-                                </div>
+                            <div class="uk-card-body uk-padding-remove-top">
+                                <h3 class="uk-card-title">{{Descricao}}</h3>
+                                <p class="mb-0">Stock: {{Column1}}</p>
+                                <p class="mt-0">Warehouse: {{Armazem}}</p>
                             </div>
-
                         </div>
                     </li>
-                    {{/each}}
+                     {{/each}}
                 </ul>
             </div>
 
@@ -53,10 +50,3 @@
 
     </div>
 </div>
-
-<script>
-    $('.ban-user-btn').click(function(){
-
-    $.post('/admin/ban/');
-});
-</script>

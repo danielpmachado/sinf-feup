@@ -337,3 +337,14 @@ let profile_button = document.querySelectorAll(".profile-user-menu li");
 });
 
 addEventListeners();
+
+
+$('.ban-user-btn').on('click', banUser);
+function banUser(context){
+    let userID = context.target.getAttribute("data-id");
+    $("li[data-id=" + userID + "]").remove();
+    
+    $.ajax({
+      url: '/admin/ban/' + userID});
+
+}
