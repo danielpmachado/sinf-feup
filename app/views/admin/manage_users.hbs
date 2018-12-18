@@ -18,7 +18,7 @@
             <div class="uk-slider-container">
                 <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-grid uk-margin-bottom">
                     {{#each users}}
-                    <li>
+                    <li data-id="{{this.id}}">
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-media-top">
                                 <img src="../../images/default.png" alt="" >
@@ -53,10 +53,3 @@
 
     </div>
 </div>
-
-<script>
-    $('.ban-user-btn').click(function(){
-
-    $.post('/admin/ban/');
-});
-</script>

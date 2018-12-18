@@ -29,21 +29,16 @@ function tokenMiddleware() {
 
 function adminMiddleware() {
 	return (req, res, next) => {
-		if(req.user != null){
 		if(req.user.id == 0){
 			return next();
 		} else {
 			res.redirect('/');
 		}
-	}else
-	res.redirect('/');
-	}
-}
+}};
 
 router.get('/manage/users', adminMiddleware(), function (req, res) {
 	User.find({}, function(err, users) {
-		let context = users;
-		res.render('admin/list_users', {users});
+		res.render('admin/manage_users', {users});
 	});
 });
 
