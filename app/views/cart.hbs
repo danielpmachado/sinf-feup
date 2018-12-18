@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
                                             <a href="/products/2" class="product-name"><strong>{{ Descricao }}</strong></a>
-                                            <p class="price">{{ PVP1 }} €</p>
+                                            <p><b class="price">{{ PVP1 }}</b> €</p>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-2 float-right">
                                             <button id="delete" type="button" class="btn btn-outline-danger float-right">
@@ -64,8 +64,18 @@
                             <div class="card-footer">
                                 <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn" onclick="$('#step-2-link').removeClass('disabled'); $('#step-2-link').tab('show')">Checkout</button>
                                 <div class=" pt-2">
-                                    Total price: <b class="price"></b> €
+                                    Total price: <b id="totalPrice"></b> €
                                 </div>
+                                <script>
+                                    let prices = document.querySelectorAll('b.price');
+                                    let quantities = document.querySelectorAll('input.qty');
+                                    let totalPrice = 0;
+                                    prices.forEach(function(element, index, arr) {
+                                        // Falta multiplicar pela quantidade
+                                        totalPrice += parseFloat(element.innerText) * quantities[index].value;
+                                    });
+                                    document.querySelector('#totalPrice').innerText = totalPrice;
+                                </script>
                             </div>
                         </div>
                     </div>
