@@ -20,7 +20,7 @@ sudo service mongod start
 npm start
 
 ```
-localhost:3000
+* localhost:3000
 
 ### Manage Mongodb database
 ```
@@ -30,3 +30,18 @@ db.users.find()
 db.users.remove({})
 db.dropDatabase()
 ```
+
+- [ ] Retificar estrelas de score
+- [ ] Mudar pagina do historico
+- [ ] Client Orders - profile page 
+- [ ] Criar página - Orders
+- [ ] Client Orders - show products - mostrar produtos de uma encomenda especifica
+- [ ] Criar Order (encomenda) - no final do processo do carrinho
+- [ ] Mostrar best sellers - admin, navbar e pagina inicial
+- [ ] Mostrar Top category  - todos os produtos da categoria
+- [ ] Pedir mais stock
+- [ ] Mostrar Orders - listar todas as encomendas na pagina de Admin
+- [ ] Criar artigo - criar preço
+- [ ] Transformar documento - implementar
+- [ ] Mostrar nº vendas de cada produto
+- [ ] Criar nova base de dados
