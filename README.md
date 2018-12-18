@@ -22,10 +22,6 @@ npm start
 ```
 localhost:3000
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 48ce37a469244c2de5af5b47ac18e1075d82ff7f
 ### Manage Mongodb database
 ```
 mongo
@@ -34,7 +30,3 @@ db.users.find()
 db.users.remove({})
 db.dropDatabase()
 ```
-<<<<<<< HEAD
-
-=======
->>>>>>> 48ce37a469244c2de5af5b47ac18e1075d82ff7f

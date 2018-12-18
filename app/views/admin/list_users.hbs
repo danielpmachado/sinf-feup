@@ -21,13 +21,13 @@
                     <li>
                         <div class="uk-card uk-card-default">
                             <div class="uk-card-media-top">
-                                <img src="../images/default.png" alt="" >
+                                <img src="../../images/default.png" alt="" >
                             </div>
                             <div class="uk-card-body">
                                 <a class="uk-card-title" href="/user/profile/{{this.id}}" style="text-decoration: none;">{{this.name}}</a>
                                 <p>{{this.email}}</p>
                                 <div class="card-btn">
-                                        <a href="product.html" class="btn  btn-outline-danger  btn-block" data-toggle="modal" data-target="#banModal">Ban User</a>
+                                        <button class="btn  btn-outline-danger  btn-block ban-user-btn" data-toggle="modal" data-target="#banModal" data-id="{{this.id}}">Ban User</button>
                                 </div>
                             </div>
 
@@ -53,3 +53,10 @@
 
     </div>
 </div>
+
+<script>
+    $('.ban-user-btn').click(function(){
+
+    $.post('/admin/ban/');
+});
+</script>

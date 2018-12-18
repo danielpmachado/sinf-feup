@@ -27,29 +27,52 @@ function tokenMiddleware() {
 	}
 }
 
-router.get('/manage_users', tokenMiddleware(), function (req, res) {
+function adminMiddleware() {
+	return (req, res, next) => {
+		if(req.user != null){
+		if(req.user.id == 0){
+			return next();
+		} else {
+			res.redirect('/');
+		}
+	}else
+	res.redirect('/');
+	}
+}
+
+router.get('/manage/users', adminMiddleware(), function (req, res) {
 	User.find({}, function(err, users) {
 		let context = users;
-		console.log(context[0].name);
-		res.render('list_users', {users});
+		res.render('admin/list_users', {users});
 	});
 });
 
-router.get('/best_selling_products', function(req, res) {
+router.get('/best_selling_products',adminMiddleware(), function(req, res) {
 	res.render('best_sellers');
 });
 
-router.get('/top_category', function(req, res) {
+router.get('/top_category',adminMiddleware(), function(req, res) {
 	res.render('top_category');
 });
 
-router.get('/manage_orders', function(req, res) {
+router.get('/manage_orders',adminMiddleware(), function(req, res) {
 	res.render('manage_orders');
 });
 /*
 router.get('/manage_products', function(req, res) {
 	res.render('manage_products');
 });*/
+
+router.get('/ban/:userID',adminMiddleware(),function(req,res){
+	console.log(req.params.userID);
+	User.findOneAndRemove({_id: req.params.userID}, (err) => {
+		if (err) {
+		  return res.redirect("/");
+		}
+		console.log("User Account Deleted");
+		return res.redirect("/");
+	  });
+});
 
 
 router.get('/manage_products',tokenMiddleware(), function(req,res){

@@ -68,6 +68,11 @@ A006
     Peso  - 4,3
     Observacoes
 
+GERAR STOCK INICIAL
+Geral > Documentos Internos > ESI
+
+DESIGNAÇAO FISCAL
+Vendas > Documentos > F4 > ECL > Designação Fical > NE
 Geral > Documentos Internos > ESI 
 
 Artigo > Observacoes
