@@ -32,9 +32,11 @@ router.get('/', tokenMiddleware(), function(req, res) {
   } catch (err) {
     cart = null; 
   }
+  console.log(cart);
   if(cart != null){
     var products = [];
     cart.forEach(function(element, index, a) {
+      console.log(element);
       var productID = element.id;
       let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca  INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE a.Artigo=' + '\'' + productID + '\'';
 
