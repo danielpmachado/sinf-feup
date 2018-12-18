@@ -21,39 +21,59 @@ A001
     Descricao - Macbook Pro
     PVP1 - 1832,99
     Marca - B001
+    Peso  - 4,8
+    Observacoes -   CPU: 2.9GHz Intel Core i9-8950HK (hex-core, 8 threads, 12MB cache, up to 4.8GHz) 
+                    Graphics: AMD Radeon Pro 560X, Intel UHD Graphics 630.
+                    RAM: 32GB (2,400MHz DDR4)
+                    Screen: 15.4-inch, 2,880 x 1,800 Retina display (backlit LED, IPS, 500 nits brightness, wide color P3 gamut)
+                    Storage: 2TB SSD.
 
 A002
     Familia - F001
     Descricao - Surface Laptop 13.5' Platina
     PVP1 - 993,79
     Marca - B003
+    Peso  - 4
+    Observacoes -  
 
 A003
     Familia - F002
     Descricao - Auscultadores Bluetooth WH-CH400 G.CE7
     PVP1 - 59,99
     Marca - B004
+    Peso  - 3,7
+    Observacoes
 
 A004
     Familia - F003
     Decricao - IPhone X - 256 GB
     PVP1 - 1349,99
     Marca - B001
+    Peso  - 4,8
+    Observacoes
 
 A005
     Familia - F004  
     Decricao - Nintendo Switch Cinzenta
     PVP1 - 329,99
     Marca - B005
+    Peso  - 4,5
+    Observacoes
 
 A006
     Familia - F005
     Descricao - Aorus NVidia GeForce GTX 1080 Ti Xtreme Edition 11G
     PVP1- 1099
     Marca - B006
+    Peso  - 4,3
+    Observacoes
 
 GERAR STOCK INICIAL
 Geral > Documentos Internos > ESI
 
 DESIGNAÇAO FISCAL
 Vendas > Documentos > F4 > ECL > Designação Fical > NE
+Geral > Documentos Internos > ESI 
+
+Artigo > Observacoes
+Artigo > Outros Campos > Peso Bruto

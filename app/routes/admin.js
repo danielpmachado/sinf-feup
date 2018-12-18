@@ -58,6 +58,10 @@ router.get('/top_category',adminMiddleware(), function(req, res) {
 router.get('/manage_orders',adminMiddleware(), function(req, res) {
 	res.render('manage_orders');
 });
+/*
+router.get('/manage_products', function(req, res) {
+	res.render('manage_products');
+});*/
 
 router.get('/ban/:userID',adminMiddleware(),function(req,res){
 	console.log(req.params.userID);
@@ -71,7 +75,32 @@ router.get('/ban/:userID',adminMiddleware(),function(req,res){
 });
 
 
-/*
+router.get('/manage_products',tokenMiddleware(), function(req,res){
+
+	console.log('test products');
+	
+    let query = 'SELECT a.Artigo, a.Descricao, am.PVP1, m.Descricao, a.Observacoes, a.Peso, f.Descricao FROM Artigo a INNER JOIN Marcas m ON m.Marca=a.Marca INNER JOIN Familias f ON f.Familia=a.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo';
+ 
+	let options = {
+	  method: 'post',
+	  body: query,
+	  json: true,
+	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+	  headers: {'Authorization': 'Bearer ' + res.token}
+	};
+  
+	request(options, (error, response, body) => {
+	  if (error) {
+		console.error(error);
+		return;
+	  } else {
+		var products = body.DataSet.Table;
+        console.log(products);
+        res.render('manage_products',{products}); 
+	  }
+	});
+  });
+
 /*
 router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 	let userID = req.params.userID;

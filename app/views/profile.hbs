@@ -1,7 +1,14 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit-icons.min.js"></script>
+
+
 <div class="container adminContainer">
-	<div class="row">
-		<div class="col-md-3">
-          <div class="profile-sidebar">
+    
+    <div class="row">
+        
+        <div class="col-md-3">
+            <div class="profile-sidebar">
                 <div class="profile-user-pic">
                     <img src="/images/default.png" alt="" class="img-fluid">
                 </div>
@@ -12,98 +19,29 @@
                     <ul class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
                         <li  class="active"><a data-toggle="pill" href="#overview"><i class="fa fa-user"></i>Overview</a></li>
                         <li><a data-toggle="pill" href="#history"><i class="fa fa-history"></i>History </a></li>
-                        <li><a data-toggle="pill" href="#history"><i class="fa fa-cogs"></i>Settings </a></li>
+                        <li><a data-toggle="pill" href="#settings"><i class="fa fa-cogs"></i>Settings </a></li>
                     </ul>
                 </div>
-          </div>
-      </div>
-        <div class="profile-tabs tab-content col-md-9">
-            <div id="overview" class="tab-pane fade show active">
-                    <div class="card fav-card">
-            <div class="card-header bg-dark text-light">Personal Info</div>
-                                        <div class="card-body">
-                                                <a> Name </a> <p>{{client.Nome}}</p>
-                                                <a> Email </a> <p>{{email}}</p>
-                                                <a> Address </a> <p>{{client.Fac_Mor}}</p>
-                                                <a> City </a> <p>{{client.Fac_Local}}</p>
-                                                <a> ZIP </a> <p>{{client.Fac_Cp}}</p>
-                                                <a> Tax Identification Number </a> <p> {{client.NumContrib}} </p>
-                                                <a> Password</a> <p> ********** </p>
-                                    </div>
-                            </div>
             </div>
-            <div id="favorites" class="tab-pane fade">
+        </div>
+        
+        <div class="profile-tabs tab-content col-md-9">
+            
+            <div id="overview" class="tab-pane fade show active">
                 <div class="card fav-card">
-                    <div class="card-header bg-dark text-light">
-                            Favorites
-                    </div>
+                    <div class="card-header bg-dark text-light">Personal Info</div>
                     <div class="card-body">
-                        <!-- PRODUCT -->
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-2 text-center">
-                                <img class="img-responsive" src="images/product1.jpg" alt="prewiew" width="120" height="80">
-                            </div>
-                            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                <h4 class="product-name"><strong>MacBook Pro</strong></h4>
-                                <h4>
-                                    <small>1123€</small>
-                                </h4>
-                            </div>
-                            <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right ">
-                                <button type="button" class="btn btn-outline-success btn-xs">
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-                                </button>
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                            <i class="fa fa-trash" aria-hidden="true"></i> Remove
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
-                        <!-- END PRODUCT -->
-                        <!-- PRODUCT -->
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-2 text-center">
-                                <img class="img-responsive" src="images/product1.jpg" alt="prewiew" width="120" height="80">
-                            </div>
-                            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                <h4 class="product-name"><strong>MacBook Pro</strong></h4>
-                                <h4>
-                                    <small>1123€</small>
-                                </h4>
-                            </div>
-                            <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right ">
-                                <button type="button" class="btn btn-outline-success btn-xs">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-                                </button>
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i> Remove
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-12 col-sm-12 col-md-2 text-center">
-                                    <img class="img-responsive" src="images/product1.jpg" alt="prewiew" width="120" height="80">
-                            </div>
-                            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                                <h4 class="product-name"><strong>MacBook Pro</strong></h4>
-                                <h4>
-                                    <small>1123€</small>
-                                </h4>
-                            </div>
-                            <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right ">
-                                <button type="button" class="btn btn-outline-success btn-xs">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
-                                </button>
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i> Remove
-                                </button>
-                            </div>
-                        </div>
-                        <hr>
+                            <a> Name </a> <p>{{client.Nome}}</p>
+                            <a> Email </a> <p>{{email}}</p>
+                            <a> Address </a> <p>{{client.Fac_Mor}}</p>
+                            <a> City </a> <p>{{client.Fac_Local}}</p>
+                            <a> ZIP </a> <p>{{client.Fac_Cp}}</p>
+                            <a> Tax Identification Number </a> <p> {{client.NumContrib}} </p>
+                            <a> Password</a> <p> ********** </p>
                     </div>
                 </div>
             </div>
+
             <div id="history" class="tab-pane fade">
                 <div uk-slider="center: true">
                     <div class="uk-position-relative">
@@ -236,6 +174,60 @@
                     <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"></ul>
                 </div>
 			</div>
+
+
+            <div id="settings" class="tab-pane fade show">
+                <div class="card fav-card">
+                    <div class="card-header bg-dark text-light">Settings</div>
+                    <div class="card-body">
+                        <form form class="form-horizontal" enctype="multipart/form-data" method="POST" action="http://lbaw1753.lbaw-prod.fe.up.pt/users/21/update">
+                            <input type="hidden" name="_token" value="yxYXJHesf3eHToxUzS0YDd4NJ3OOKelzgYRrNTXx">
+                
+                            <div class="form-group">
+                                <a> Username </a>
+                                <input  id="name" type="text" class="form-control" name="username" value="{{client.Nome}}" required autofocus>
+                            </div>
+                
+                            <div class="form-group">
+                                <a> Tax Identification Number </a>
+                                <input  id="nif" type="text" class="form-control" name="nif" value="{{client.NumContrib}}" required>
+                            </div>
+
+                            <div class="form-group">
+                                <a> Address </a>
+                                <input  id="address" type="text" class="form-control" name="address" value="{{client.Fac_Mor}}" required>
+                            </div>
+                
+                            <div class="form-row">
+                                <div class="form-group col-md-8 ">
+                                    <a> City </a>
+                                    <input  id="city" type="text" class="form-control" name="city" value="{{client.Fac_Local}}" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <a> Zip </a>
+                                    <input  id="zip" type="text" class="form-control" name="zip" value="{{client.Fac_Cp}}" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <a> Email </a>
+                                <input  id="email" type="text" class="form-control" name="email" value="{{email}}" required>
+                            </div>
+
+                            <div class="form-group"> 
+                                <a> Profile Image </a><br>
+                                <input type="file" name="avatar">
+                            </div>
+                            
+                            <div class="form-group float-left">
+                                <button type="submit" class="btn btn-dark ">Save Changes</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+  
 		</div>
 	</div>
 </div>
