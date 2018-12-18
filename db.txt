@@ -52,4 +52,8 @@ A006
     PVP1- 1099
     Marca - B006
 
-Geral > Documentos Internos > ESI 
+GERAR STOCK INICIAL
+Geral > Documentos Internos > ESI
+
+DESIGNAÇAO FISCAL
+Vendas > Documentos > F4 > ECL > Designação Fical > NE

@@ -50,9 +50,11 @@ router.post('/register',tokenMiddleware(), function(req, res) {
       Morada:  req.body.address,
       Localidade:  req.body.city,
       CodigoPostal:  req.body.zip,
+      LocalidadeCodigoPostal: req.body.city,
       NumContribuinte:  req.body.nif,
       CondPag: 2,
-      Moeda: "EUR"
+      Moeda: "EUR",
+      Pais: "PT"
     };
   
     let options = {
