@@ -35,37 +35,6 @@ function sendAjaxRequest(method, url, data, handler) {
 function addEventListeners() {
 
 // ---------------------------------
-//            PRODUCT
-//----------------------------------
-
-  let fav_button = document.querySelectorAll(' #fav');
-  [].forEach.call(fav_button, function(fav) {
-    fav.onclick = function(){
-      favoriteRequest(this);
-    }
-  });
-
-  let comment_button = document.querySelector('form.submit-review #submit_review');
-  if(comment_button!=null)
-    comment_button.onclick = function(event){
-      addReviewRequest(this,event);
-  }
-
-  let rate_button = document.querySelectorAll('form.submit-review .review-block-rate button');
-  [].forEach.call(rate_button, function(rate) {
-    rate.onmouseover = function(){
-      activateRateButtons(this);
-    }
-    rate.onmouseleave = function(){
-      deactivateRateButtons(this);
-    }
-
-    rate.onclick = function(){
-      finalRateButtons(this);
-    }
-  });
-
-// ---------------------------------
 //            CART
 //----------------------------------
 

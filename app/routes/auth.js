@@ -110,10 +110,7 @@ passport.use(new LocalStrategy(
 ));
 
 router.post('/login',
-passport.authenticate('local'),
-	function (req, res) {
-		res.redirect('/');
-	});
+passport.authenticate('local',{ successRedirect: '/', failureRedirect: '/' }));
 
 router.get('/logout', function (req, res) {
   req.logout();
