@@ -112,7 +112,7 @@ function sendConfirmationRequest(button){
   console.log(order);
 
   if(+total>0)
-    sendAjaxRequest('put', '/orders/create', order, confirmationHandler);
+    sendAjaxRequest('put', '/cart/orders/create', order, confirmationHandler);
   else
     alert("You can not make an order whit no products attached!");
 }
