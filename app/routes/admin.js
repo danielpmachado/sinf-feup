@@ -72,7 +72,7 @@ router.get('/top_category',adminMiddleware(), function(req, res) {
 
 });
 
-router.get('/manage_orders',adminMiddleware(), function(req, res) {
+router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
 	
 	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc';
 
