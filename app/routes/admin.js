@@ -44,28 +44,28 @@ router.get('/manage/users', adminMiddleware(), function (req, res) {
 
 
 router.get('/top_category',adminMiddleware(), function(req, res) {
-	// let userID = req.params.userID;
-	// let query = 'SELECT TOP(1) f.familia FROM Familias as f INNER JOIN Artigo as a ON f.familia=a.familia INNER JOIN LinhasDoc as ld ON ld.artigo=a.artigo GROUP BY f.familia ORDER BY SUM(ld.quantidade) ';
-	//
-	// let options = {
-	//   method: 'post',
-	//   body: query,
-	//   json: true,
-	//   url: 'http://localhost:2018/WebApi/Administrador/Consulta',
-	//   headers: {'Authorization': 'Bearer ' + res.token}
-	// };
-	//
-	// request(options, (error, response, body) => {
-	//   if (error) {
-	// 	console.error(error);
-	// 	return;
-	//   } else {
-	// 		var category = body.DataSet.Table;
-  //       console.log(category);
-  //       res.render('admin/top_category',{category}); // change to best sellers
-	//   }
-	// });
-	res.render('admin/top_category');
+	let userID = req.params.userID;
+	let query = 'SELECT TOP(1) f.familia FROM Familias as f INNER JOIN Artigo as a ON f.familia=a.familia INNER JOIN LinhasDoc as ld ON ld.artigo=a.artigo GROUP BY f.familia ORDER BY SUM(ld.quantidade) ';
+
+	let options = {
+	  method: 'post',
+	  body: query,
+	  json: true,
+	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+	  headers: {'Authorization': 'Bearer ' + res.token}
+	};
+
+	request(options, (error, response, body) => {
+	  if (error) {
+		console.error(error);
+		return;
+	  } else {
+			var category = body.DataSet.Table;
+        console.log(category);
+        res.render('admin/top_category',{category}); // change to best sellers
+	  }
+	});
+	res.render('top_category');
 
 });
 

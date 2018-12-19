@@ -72,14 +72,10 @@ function addEventListeners() {
   final_step.onclick = function(){
     $('#step-4-link').removeClass('disabled');
     $('#step-4-link').tab('show')
-    makeFinalStep(this);
+    setPurchaseInfo();
   }
 
-  let confirmation = document.querySelector("#confirmation");
-  if(confirmation!=null)makeFinalStep
-    confirmation.onclick = function(){
-    sendConfirmationRequest(this);
-  }
+
 
 }
 
@@ -87,17 +83,21 @@ function addEventListeners() {
 //            Cart
 //----------------------------------
 
-function sendConfirmationRequest(button){
+$("#confirmation").on("click", sendConfirmationRequest);
+
+function sendConfirmationRequest(){
   let address = document.querySelector('#address-conf').innerHTML;
-  let city = document.querySelector('#city-conf').innerHTML;
-  let zip = document.querySelector('#zip-conf').innerHTML;
+  let city = document.querySelector('#city').value;
+  let zip = document.querySelector('#zip').value;
   let payment = document.querySelector('#payment-conf').innerHTML;
   let total = document.querySelector('#total-conf').innerHTML;
   let products = Cookies.getJSON('cart');
+  let id = $("#load_data")[0].getAttribute("data-id");
+
   let order = {
     "Linhas": [], 
     "Tipodoc": "ECL", 
-    "Entidade": 'user',
+    "Entidade": id,
     "TipoEntidade": "C",
     "ModoPag": payment,
     "MoradaEntrega": address,
@@ -109,57 +109,37 @@ function sendConfirmationRequest(button){
     order.Linhas.push({"Artigo": element.id, "Quantidade": element.count});
   })
 
-  console.log(order);
-
-  if(+total>0)
-    sendAjaxRequest('put', '/cart/orders/create', order, confirmationHandler);
+  if(+total>0){
+    $.ajax({
+      method: 'post',
+      url: '/cart/orders/create',
+      data: order,
+      success: function(data, textStatus, jQxhr) {
+        console.log("Fdsfsd");
+        confirmationHandler();
+      }
+    });
+  }
   else
     alert("You can not make an order whit no products attached!");
 }
 
 function confirmationHandler(){
-  let order = JSON.parse(this.responseText);
+  console.log("gsfsd");
   let element = document.getElementById('progress-bar');
-  let price_cart =document.querySelector('#nav_cart').innerHTML = `<i class="fa fa-shopping-cart"></i>0,00 € `;
 
   element.innerHTML = `
                         <div class="jumbotron text-center" style="background-color:transparent;">
                         <br><br><br>
                         <h1 class="display-3">Thank You!</h1><br>
-                        <p class="lead"> Your transaction has been successfully aproved. You will received your order really soon.</p>
+                        <p class="lead"> Your purchase has been successfully aproved. You will received your order as soon as possible.</p>
                         <hr>
-                      
                         <p class="lead"><br>
                           <a class="btn btn-success btn-lg" href="/" role="button">Continue to homepage</a>
                         </p>
                         <br><br><br>
                       </div>`
   
-}
-
-
-function makeFinalStep(button){
-  let address_final = document.getElementById('address').value;
-  let city_final = document.getElementById('city').value;
-  let zip_final = document.getElementById('zip').value;
-  let radios = document.getElementsByName('payment');
- 
-  let payment_final;
-  for (let i = 0, length = radios.length; i < length; i++){
-    if (radios[i].checked){
-      payment_final = radios[i].value;
-      break;
-    }
-  }
-
-  let address = document.querySelector('#address-conf');
-  address.innerHTML = `${address_final}`;
-  let city = document.querySelector('#city-conf');
-  city.innerHTML = `${city_final}`;
-  let zip = document.querySelector('#zip-conf');
-  zip.innerHTML = `${zip_final}`;
-  let payment = document.querySelector('#payment-conf');
-  payment.innerHTML = `${payment_final}`;
 }
 
 function sendAddCartRequest(button){
@@ -331,6 +311,10 @@ function changeProfilePill(pill){
 
 addEventListeners();
 
+// ---------------------------------
+//         Ban User
+//----------------------------------
+
 
 $('.ban-user-btn').on('click', banUser);
 function banUser(context){
@@ -341,6 +325,12 @@ function banUser(context){
       url: '/admin/ban/' + userID});
 
 }
+
+
+// ---------------------------------
+//            Cart
+//----------------------------------
+
 
 $('#load_data').on('click', loadData);
 function loadData(context){
@@ -358,7 +348,6 @@ function loadData(context){
     });
 }
 
-$('#step-3-next').on('click', setPurchaseInfo);
 function setPurchaseInfo(){
   $("#address-conf").text($("#address").val() + " " + $("#city").val() + " " + $("#zip").val());
   $("#nif-conf").text($("#nif").val());
@@ -372,6 +361,8 @@ function setPurchaseInfo(){
       break;
     }
   }
+
+  $("#payment-conf").text(payment);
 
   let list = document.getElementById("products_list");
   list.innerHTML = `<h5><strong>Products</strong></h5>`;
