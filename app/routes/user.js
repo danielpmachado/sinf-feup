@@ -82,7 +82,7 @@ router.get('/history/:userID',tokenMiddleware(), function(req,res){
 router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res){
 
   let orderID = req.params.orderID;
-  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.NomeFac, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cd.Id=' + '\'' + orderID + '\'';
+  let query = '  SELECT ld.descricao, ld.quantidade, ld.PrecUnit, ld.PrecoLiquido, ld.TaxaIva, ld.TotalIva FROM LinhasDoc as ld WHERE ld.IdCabecDoc =' + '\'' + orderID + '\'';
 
   let options = {
     method: 'post',
@@ -98,9 +98,9 @@ router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res
       console.error(error);
       return;
     } else {     
-        var orders = body.DataSet.Table; 
-        console.log(orders);
-        res.render('history', {orders} );
+        var products = body.DataSet.Table; 
+        console.log(products);
+        res.render('historyOrder', {products} );
     
     }
   });

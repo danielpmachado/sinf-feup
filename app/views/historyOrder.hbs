@@ -1,0 +1,48 @@
+<div class="container adminContainer">
+    
+    <div class="row">
+        
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <div class="profile-user-pic">
+                    <img src="/images/default.png" alt="" class="img-fluid">
+                </div>
+                <div class="profile-user-name">
+                    {{order.NomeFac}}
+                </div>
+                <div class="profile-user-menu">
+                    <ul class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                        <li><a  href="/user/profile/{{user.id}}/#overview"><i class="fa fa-user"></i>Overview</a></li>
+                        <li class="active"><a data-toggle="pill" href=""><i class="fa fa-history"></i>History </a></li>
+                        <li><a   href="/user/profile/{{user.id}}/#settings"><i class="fa fa-cogs"></i>Settings </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tabs tabs-content col-md-9">
+            
+           
+                <div class="container-fluid">
+                    <div class="card fav-cart">
+                        <div class="card-header bg-dark text-light">Order Products</div>
+                        <div class="card-body">
+                            <h5 class="mb-4"><strong>Products</strong></h5>
+                            
+                            {{#each products}}
+                            <div class="product-conf">
+                                <h6><strong>Name:</strong> {{descricao}}</h6>
+                                <h6 class="qty"><strong>Quantity:</strong>  {{quantidade}}</h6>
+                                <h6><strong>Price:</strong> {{PrecUnit}} €</h6>
+                                <br>
+                            </div>
+                            {{/each}}
+                        
+
+                        </div>
+                    </div>
+                </div>
+           
+		</div>
+	</div>
+</div>
