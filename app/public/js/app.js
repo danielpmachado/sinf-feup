@@ -89,12 +89,30 @@ function addEventListeners() {
 
 function sendConfirmationRequest(button){
   let address = document.querySelector('#address-conf').innerHTML;
-  let contact = document.querySelector('#contact-conf').innerHTML;
+  let city = document.querySelector('#city-conf').innerHTML;
+  let zip = document.querySelector('#zip-conf').innerHTML;
   let payment = document.querySelector('#payment-conf').innerHTML;
   let total = document.querySelector('#total-conf').innerHTML;
+  let products = Cookies.getJSON('cart');
+  let order = {
+    "Linhas": [], 
+    "Tipodoc": "ECL", 
+    "Entidade": 'user',
+    "TipoEntidade": "C",
+    "ModoPag": payment,
+    "MoradaEntrega": address,
+    "LocalidadeEntrega": city,
+    "CodPostalEntrega": zip,
+    "DataVenc": "22-10-2018",
+  }
+  products.forEach(function(element){
+    order.Linhas.push({"Artigo": element.id, "Quantidade": element.count});
+  })
+
+  console.log(order);
 
   if(+total>0)
-    sendAjaxRequest('put', '/orders/create' ,{address:address,contact:contact,payment:payment},confirmationHandler);
+    sendAjaxRequest('put', '/orders/create', order, confirmationHandler);
   else
     alert("You can not make an order whit no products attached!");
 }
@@ -121,29 +139,27 @@ function confirmationHandler(){
 
 
 function makeFinalStep(button){
-
-  let address_final = document.getElementById('address').value
-                + " " + document.getElementById('city').value
-                + " " + document.getElementById('zip').value;
-  let contact_final= document.getElementById('contact').value;
+  let address_final = document.getElementById('address').value;
+  let city_final = document.getElementById('city').value;
+  let zip_final = document.getElementById('zip').value;
   let radios = document.getElementsByName('payment');
  
   let payment_final;
   for (let i = 0, length = radios.length; i < length; i++){
     if (radios[i].checked){
-       payment_final=radios[i].value;
+      payment_final = radios[i].value;
       break;
     }
   }
 
   let address = document.querySelector('#address-conf');
   address.innerHTML = `${address_final}`;
-  let contact = document.querySelector('#contact-conf');
-  contact.innerHTML = `${contact_final}`;
+  let city = document.querySelector('#city-conf');
+  city.innerHTML = `${city_final}`;
+  let zip = document.querySelector('#zip-conf');
+  zip.innerHTML = `${zip_final}`;
   let payment = document.querySelector('#payment-conf');
   payment.innerHTML = `${payment_final}`;
-
-
 }
 
 function sendAddCartRequest(button){

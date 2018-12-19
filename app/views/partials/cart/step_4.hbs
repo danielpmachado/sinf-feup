@@ -1,17 +1,27 @@
 <div role="tabpanel" class="tab-pane fade" id="step-4" aria-labelledby="step-4-link">
-    <div class="container-fluid" style="width:70%;">
-        <div class="card fav-cart">
-            <div class="card-header bg-dark text-light">Purchase Confirmation</div>
-            <div class="card-body">
-                <div id="products_list">
+                <div class="container-fluid" style="width:70%;">
+                    <div class="card fav-cart">
+                        <div class="card-header bg-dark text-light">Purchase Confirmation</div>
+                        <div class="card-body">
+                            <h5><strong>Products</strong></h5>
+                            {{#each products}}
+                            <div class="product-conf" data-id="2">
+                                <h6><strong>Name:</strong> {{ Descricao }}</h6>
+                                <h6 class="qty"><strong>Quantity:</strong>  {{ count }}</h6>
+                                <h6><strong>Price:</strong>  {{PVP1}} €</h6>
+                                <br>
+                            </div>
+                            {{/each}}
+                            <hr>
 
-                </div>
+                            <h5><strong>Expedition Info</strong></h5>
+                            <h6><strong>Address: </strong> <span id="address-conf"></span></h6>
+                            <h6><strong>City: </strong> <span id="city-conf"></span></h6>
+                            <h6><strong>Zip: </strong> <span id="zip-conf"></span></h6>
+                            <h6><strong>Tax Identification Number: </strong> <span id="nif-conf"></span></h6>
+                            <h6><strong>Payment Method: </strong> <span id="payment-conf"></span></h6>
+                            <hr>
 
-                <h5><strong>Expedition Info</strong></h5>
-                <h6><strong>Address: </strong> <span id="address-conf"></span></h6>
-                <h6><strong>Tax Identification Number: </strong> <span id="nif-conf"></span></h6>
-                <h6><strong>Payment Method: </strong> <span id="payment-conf"></span></h6>
-                <hr>
 
                 <h6 class="float-right"><strong>Total:</strong> <span id="total-conf"></span> €</h6>
 

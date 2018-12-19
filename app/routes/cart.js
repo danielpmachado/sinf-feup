@@ -56,7 +56,6 @@ router.get('/', tokenMiddleware(), function(req, res) {
           context.count = cart[index].count;
           products.push(context);
           if(index == a.length - 1){
-            console.log(products);
             res.render('cart', {'products': products});
           }
         }
@@ -64,6 +63,27 @@ router.get('/', tokenMiddleware(), function(req, res) {
     });
   } else
     res.render('cart', null);
+});
+
+/* PUT create order. */
+router.put('/orders/create', tokenMiddleware(), function(req, res) {
+  console.log(req)
+  let options = {
+    method: 'post',
+    body: null,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Vendas/Docs/CreateDocument/',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+  request(options, (error, response, body) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+      console.log(body);
+    }
+  });
 });
 
 module.exports = router;
