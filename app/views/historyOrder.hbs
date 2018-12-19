@@ -25,36 +25,19 @@
            
                 <div class="container-fluid">
                     <div class="card fav-cart">
-                        <div class="card-header bg-dark text-light">Order</div>
+                        <div class="card-header bg-dark text-light">Order Products</div>
                         <div class="card-body">
-                            <h5><strong>Products</strong></h5>
-                            <div class="product-conf" data-id="2">
-                                <h6><strong>Name:</strong> MacBook Pro</h6>
-                                <h6 class="qty"><strong>Quantity:</strong>  1</h6>
-                                <h6><strong>Price:</strong>  1832.99 €</h6>
+                            <h5 class="mb-4"><strong>Products</strong></h5>
+                            
+                            {{#each products}}
+                            <div class="product-conf">
+                                <h6><strong>Name:</strong> {{descricao}}</h6>
+                                <h6 class="qty"><strong>Quantity:</strong>  {{quantidade}}</h6>
+                                <h6><strong>Price:</strong> {{PrecUnit}} €</h6>
                                 <br>
                             </div>
-                            <div class="product-conf" data-id="8">
-                                <h6><strong>Name:</strong> Portátil Híbrido 14' HP Pavilion X360 14</h6>
-                                <h6 class="qty"><strong>Quantity:</strong>  2</h6>
-                                <h6><strong>Price:</strong>  849.99 €</h6>
-                                <br>
-                            </div>
-                            <div class="product-conf" data-id="3">
-                                <h6><strong>Name:</strong> Huawei P20 Pro</h6>
-                                <h6 class="qty"><strong>Quantity:</strong>  1</h6>
-                                <h6><strong>Price:</strong>  788.99 €</h6>
-                                <br>
-                            </div>
-                            <hr>
-
-                            <h5><strong>Expedition Info</strong></h5>
-                            <h6><strong>Address: </strong> <span id="address-conf"></span>{{order.MoradaEntrega}}</h6>
-                            <h6><strong>Tax Identification Number: </strong> <span id="contact-conf">{{order.NumContribuinte}}</span></h6>
-                            <h6><strong>Payment Method: </strong> <span id="payment-conf">{{order.ModPag}}</span></h6>
-                            <hr>
-
-                            <h6 class="float-right"><strong>Total:</strong> <span>{{order.TotalDocumento}}</span> €</h6>
+                            {{/each}}
+                        
 
                         </div>
                     </div>
