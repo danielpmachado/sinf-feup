@@ -40,10 +40,11 @@ db.dropDatabase()
 - [x] Criar página - Orders
 - [x] Client Orders - show products - mostrar produtos de uma encomenda especifica
 - [ ] Criar Order (encomenda) - no final do processo do carrinho
-- [ ] Mostrar best sellers - admin, navbar e pagina inicial
+- [x] Mostrar best sellers - admin, e pagina inicial
+- [ ] Navbar - conteudo - bestsellers, etc
 - [ ] Mostrar Top category  - todos os produtos da categoria
 - [ ] Pedir mais stock
-- [ ] Mostrar Orders - listar todas as encomendas na pagina de Admin
+- [x] Mostrar Orders - listar todas as encomendas na pagina de Admin
 - [ ] Criar artigo - criar preço
 - [ ] Transformar documento - implementar
 - [ ] Mostrar nº vendas de cada produto
