@@ -41,10 +41,7 @@ router.get('/manage/users', adminMiddleware(), function (req, res) {
 		res.render('admin/manage_users', {users});
 	});
 });
-/*
-router.get('/best_selling_products',adminMiddleware(), function(req, res) {
-	res.render('best_sellers');
-});*/
+
 
 router.get('/top_category',adminMiddleware(), function(req, res) {
 	// let userID = req.params.userID;
@@ -74,7 +71,8 @@ router.get('/top_category',adminMiddleware(), function(req, res) {
 
 router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
 	
-	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc';
+	let orderState = "P";
+	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
 
 	let options = {
 	  method: 'post',
@@ -93,7 +91,61 @@ router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req,
 			console.log(body);
 			var orders = body.DataSet.Table; 
 			console.log(orders); 
-      res.render('manage_orders',{orders});
+      res.render('admin/manage_orders',{orders});
+	  }
+	});
+});
+
+router.get('/manage_orders/cancelled_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
+	
+	let orderState = "R";
+	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
+
+	let options = {
+	  method: 'post',
+	  body: query,
+	  json: true,
+	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+	  headers: {'Authorization': 'Bearer ' + res.token}
+	};
+
+	request(options, (error, response, body) => {
+	  if (error) {
+		console.error(error);
+		return;
+	  } else {
+
+			console.log(body);
+			var orders = body.DataSet.Table; 
+			console.log(orders); 
+      res.render('admin/manage_orders_cancelled',{orders});
+	  }
+	});
+});
+
+router.get('/manage_orders/transformed_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
+	
+	let orderState = "T";
+	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
+
+	let options = {
+	  method: 'post',
+	  body: query,
+	  json: true,
+	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+	  headers: {'Authorization': 'Bearer ' + res.token}
+	};
+
+	request(options, (error, response, body) => {
+	  if (error) {
+		console.error(error);
+		return;
+	  } else {
+
+			console.log(body);
+			var orders = body.DataSet.Table; 
+			console.log(orders); 
+      res.render('admin/manage_orders_transf',{orders});
 	  }
 	});
 });
@@ -152,7 +204,7 @@ router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 		return;
 	  } else {
 			var products = body.DataSet.Table;  
-      res.render('best_sellers',{products});
+      res.render('admin/best_sellers',{products});
 	  }
 	});
 });
