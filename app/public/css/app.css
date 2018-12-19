@@ -1231,6 +1231,18 @@ section#faq{
     align-items: center;
 }
 
+
+/*
+--------
+ORDERS
+--------
+*/
+
+.ordersContainer .nav-tabs .nav-link.active {  
+    background-color: grey;
+}
+
+
 /*
 --------
 PAGINATION
@@ -1418,3 +1430,5 @@ MOBILE
         padding-left: 10px;
     }
 }
+
+
