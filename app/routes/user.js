@@ -98,9 +98,9 @@ router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res
       console.error(error);
       return;
     } else {     
-        var orders = body.DataSet.Table; 
-        console.log(orders);
-        res.render('history', {orders} );
+        var order = body.DataSet.Table[0]; 
+        console.log(order);
+        res.render('historyOrder', {order} );
     
     }
   });
