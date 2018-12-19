@@ -149,8 +149,13 @@ function makeFinalStep(button){
 function sendAddCartRequest(button){
   let id = button.closest('div.product').getAttribute('data-id');
 
-  if(!button.disabled)
+  if(!button.disabled){
     addProductToCard(id);
+    button.innerHTML ='<i class="fa fa-check"></i> In Cart';
+    qty_nav = document.querySelector('#unit-cart');
+    qty_nav.innerText= +qty_nav.innerText +1;
+    button.disabled =true;
+  }
 
 }
 
@@ -190,7 +195,7 @@ function increaseProductToCard(id_product){
     cart.forEach(function(x) {
       if(x.id == id_product){
         x.count++;
-        //updateQuantityHandler(id_product, x.count, 'add');
+
       }
     })
     Cookies.set('cart', cart);
@@ -204,7 +209,6 @@ function decreaseProductToCard(id_product) {
     cart.forEach(function(x) {
       if(x.id == id_product){
         x.count--;
-        //updateQuantityHandler(id_product, x.count, 'sub');
         if(x.count == 0){
           cart.splice(cart.indexOf(x), 1);
         }
@@ -228,92 +232,64 @@ function removeProductFromCard(id_product) {
   return cart;
 }
 
-function  addCartHandler(){
-  let product = JSON.parse(this.responseText);
-  let button = document.querySelector('div.product[data-id="' + product.id + '"] #cart');
-
-  button.innerHTML ='<i class="fa fa-check"></i> In Cart';
-  button.disabled =true;
-
-}
-
 function sendUpdateQuantityRequest(button){
   let id = button.closest('div.product-order').getAttribute('data-id');
   let value = button.value;
 
-  if(value == "+")
-    increaseProductToCard(id);
+  updateQuantityHandler(id, value);
 
-  if(value == "-")
-    decreaseProductToCard(id);
 
 }
 
 function sendDeleteOrderRequest(button){
   let id = button.closest('div.product-order').getAttribute('data-id');
 
+  let quantity = document.querySelector('div.product-order[data-id="' + id + '"] .qty').value;
+  let price =document.querySelector('div.product-order[data-id="' + id + '"] .price').innerHTML;
+  let total_old =document.querySelector('#totalPrice');
+
+  let total_new = Math.round((+total_old.innerText- (+price* +quantity) ) * 100) / 100 ;
+  total_old.innerText = total_new;
+
+  qty_nav = document.querySelector('#unit-cart');
+    qty_nav.innerText= +qty_nav.innerText -quantity;
+ 
+  let element = document.querySelector('div.product-order[data-id="' + id + '"]');
+  element.remove();
+
   removeProductFromCard(id);
-}
-
-function deleteOrderHandler(){
-  if (this.status != 200) window.location = '/';
-
-  let response = JSON.parse(this.responseText);
-  let product = response['product'];
-  let quantity = response['quantity'];
-
-
-  let price_cart =document.querySelector('div.shopping-cart .price');
-  let price_nav = document.querySelector('#nav_cart');
-  let price = Math.round((+price_cart.innerHTML - (+product.price* +quantity) ) * 100) / 100 ;
-
-  price_cart.innerHTML = price;
-  price_nav.innerHTML = `<i class="fa fa-shopping-cart"></i>${price} € `;
-
-
-  let element = document.querySelector('div.product-order[data-id="' + product.id + '"]');
-  element.remove();
 
 }
 
-function deleteReviewHandler(){
-  if (this.status != 200) window.location = '/';
-
-  let id = JSON.parse(this.responseText);
-
-
-  let element = document.querySelector('div.review-container[data-id="' + id + '"]');
-  element.remove();
-
-}
-
-function updateQuantityHandler(id, quantity, op){
+function updateQuantityHandler(id, op){
 
   let cart_quantity =document.querySelector('div.product-order[data-id="' + id + '"] .qty');
-  let conf_quantity = document.querySelector('div.product-conf[data-id="' + id + '"] .qty');
-  let price = document.querySelector('div.product-conf[data-id="' + id + '"] .price').innerText;
-  let price_cart =document.querySelector('div.shopping-cart .price');
-  let price_nav = document.querySelector('#nav_cart');
-  let price_conf =document.querySelector('#total-conf');
+  let price = document.querySelector('div.product-order[data-id="'+ id + '"] .price').innerText;
+  let total_old =document.querySelector('#totalPrice');
 
+  let total =0;
 
-  if(quantity >=1){
-     cart_quantity.value = quantity;
-     conf_quantity.innerHTML = `<strong>Quantity:</strong>  ${quantity}`
-  }
+  if(op== '+')
+  total = Math.round((+total_old.innerHTML + +price) * 100) / 100 ;
 
-  let price =0;
-  if(op== 'add')
-    price = Math.round((+price_cart.innerHTML + +price) * 100) / 100 ;
-  
+  if(op== '-')
+    total = Math.round((+total_old.innerHTML - +price) * 100) / 100 ;
 
-  if(op== 'sub')
-    price = Math.round((+price_cart.innerHTML - +price) * 100) / 100 ;
-  
-  if(price >0){
-    price_cart.innerHTML = price;
-    price_nav.innerHTML = `<i class="fa fa-shopping-cart"></i>${price} € ` 
-    price_conf.innerHTML = price;
+  if(total >0){
+    qty_nav = document.querySelector('#unit-cart');
+    if(op== '+'){
+      qty_nav.innerText= +qty_nav.innerText +1;
+      cart_quantity.value++;
+      increaseProductToCard(id);
+    }
+    if(op== '-'){
+      qty_nav.innerText= +qty_nav.innerText -1;
+      cart_quantity.value--;
+      decreaseProductToCard(id);
+    }
+
+    total_old.innerHTML = total; 
+   
   }
 
 }
