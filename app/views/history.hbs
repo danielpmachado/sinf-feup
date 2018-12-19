@@ -1,0 +1,63 @@
+<div class="container adminContainer">
+    
+    <div class="row">
+        
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <div class="profile-user-pic">
+                    <img src="/images/default.png" alt="" class="img-fluid">
+                </div>
+                <div class="profile-user-name">
+                    {{orders.0.NomeFac}}
+                </div>
+                <div class="profile-user-menu">
+                    <ul class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                        <li><a  href="/user/profile/{{user.id}}/#overview"><i class="fa fa-user"></i>Overview</a></li>
+                        <li class="active"><a data-toggle="pill" href=""><i class="fa fa-history"></i>History </a></li>
+                        <li><a   href="/user/profile/{{user.id}}/#settings"><i class="fa fa-cogs"></i>Settings </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="profile-tabs tabs-content col-md-9">
+            
+            <div id="history" class="tab-pane fade show">
+                <div class="card fav-card">
+                    <div class="card-header bg-dark text-light">History</div>
+                    <div class="card-body">
+                        {{#each orders}}
+                            <div class="row product mt-2">
+                             
+                                <div class="col-12  col-sm-12 text-md-left col-md-3 ml-4">
+                                    <h6><strong>Order State</strong></h6>
+                                    <p>{{this.Estado}}</p>
+                                </div>
+
+                                 <div class="col-12  col-sm-12 text-md-left col-md-3">
+                                    <h6><strong>Total</strong></h6>
+                                    <p>{{this.TotalDocumento}} €</p>
+                                </div>
+
+                                <div class="col-12  col-sm-12 text-md-left col-md-3">
+                                    <h6><strong>Date</strong></h6>
+                                    <p> {{this.DataCarga}}</p>
+                                </div>
+
+
+                                <div class="col-12  col-sm-12 text-md-left col-md-2">
+                                     <a  href="/user/history/{{../user.id}}/order/{{this.Id}}"> <button  class="btn btn-dark">More Info</button> </a> 
+                                </div>
+
+                            </div>
+                            <hr>
+                            {{/each }}
+                     
+                          
+                    </div>
+                </div>
+            </div>	
+
+		</div>
+	</div>
+</div>
