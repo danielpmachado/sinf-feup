@@ -76,7 +76,7 @@ function addEventListeners() {
   }
 
   let confirmation = document.querySelector("#confirmation");
-  if(confirmation!=null)
+  if(confirmation!=null)makeFinalStep
     confirmation.onclick = function(){
     sendConfirmationRequest(this);
   }
@@ -297,13 +297,6 @@ function updateQuantityHandler(id, op){
 //         Profile Buttons
 //----------------------------------
 
-function changeProfilePill(pill){
-  let active_pill = document.querySelector(".profile-user-menu li.active");
-
-  active_pill.classList.remove('active');
-  pill.classList.add('active');
-
-}
 
 let profile_button = document.querySelectorAll(".profile-user-menu li");
 [].forEach.call(profile_button, function(change) {
@@ -311,6 +304,14 @@ let profile_button = document.querySelectorAll(".profile-user-menu li");
     changeProfilePill(this);
   }
 });
+
+function changeProfilePill(pill){
+  let active_pill = document.querySelector(".profile-user-menu li.active");
+
+  active_pill.classList.remove('active');
+  pill.classList.add('active');
+
+}
 
 addEventListeners();
 
@@ -339,5 +340,44 @@ function loadData(context){
         $("#nif").val(data.NumContrib);
       }
     });
+}
+
+$('#step-3-next').on('click', setPurchaseInfo);
+function setPurchaseInfo(){
+  $("#address-conf").text($("#address").val() + " " + $("#city").val() + " " + $("#zip").val());
+  $("#nif-conf").text($("#nif").val());
+  $("#total-conf").text($("#totalPrice").text());
+
+  let payment;
+  let radios = document.getElementsByName('payment');
+  for (let i = 0, length = radios.length; i < length; i++){
+    if (radios[i].checked){
+       payment=radios[i].value;
+      break;
+    }
+  }
+
+  let list = document.getElementById("products_list");
+  list.innerHTML = `<h5><strong>Products</strong></h5>`;
+  let cart = $(".product-order");
+  for(i=0; i < cart.length; i++){
+    let name = cart[i].querySelector(".product-name strong").innerHTML;
+    let price = cart[i].querySelector(".price").innerHTML;
+    let quantity = cart[i].querySelector(".qty").value;
+    
+    list.innerHTML += 
+    `
+     <div class="product-conf">
+        <h6><strong>Name:</strong> ` + name + `</h6>
+        <h6 class="qty"><strong>Quantity:</strong> ` + quantity + `</h6>
+        <h6><strong>Price:</strong> ` + price + ` €</h6>
+        <br>
+     </div>
+     `
+  } 
+
+  list.innerHTML += `<hr>`
+
+  $("#payment-conf").text(payment)
 }
 
