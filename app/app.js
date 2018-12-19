@@ -60,6 +60,20 @@ app.use(passport.session());
 // Global Vars
 app.use(function (req, res, next) {
     res.locals.user = req.user || null;
+
+    let total =0;
+    try {
+        var cart = JSON.parse(req.cookies['cart']);
+      } catch (err) {
+        cart = null; 
+      }
+      
+    if(cart != null){
+        cart.forEach(function(element, index, a) {
+            total += cart[index].count;
+        }
+    )};
+    res.locals.total = total;
     next();
   });
 
