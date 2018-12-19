@@ -67,10 +67,10 @@ router.get('/', tokenMiddleware(), function(req, res) {
 
 /* PUT create order. */
 router.put('/orders/create', tokenMiddleware(), function(req, res) {
-  console.log(req)
+  console.log(req.body)
   let options = {
     method: 'post',
-    body: null,
+    body: req.body,
     json: true,
     url: 'http://localhost:2018/WebApi/Vendas/Docs/CreateDocument/',
     headers: {'Authorization': 'Bearer ' + res.token}
