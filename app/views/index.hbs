@@ -38,98 +38,24 @@
 <div id="featured-container" class="container-fluid">
   <div class="row justify-content-center">
 
-      <div class="card col-lg-3 col-md-3 col-sm-6 ">
-    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
-        <img class="card-img-top" src="/images/products/MacBook.png" alt="Card image cap">
-    </div>
+        {{#each products}}
+            <div class="card col-lg-3 col-md-3 col-sm-6 ">
+                <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
+                    <img class="card-img-top" src="/images/products/{{Artigo}}.png" alt="Card image cap">
+                </div>
 
-    <div class="card-body ">
-        <h5 class="card-title">MacBook Pro</h5>
-        <p class="card-text" style="height:-20px;">1832.99€ -
-                        Available
-                    </p>
-        <hr>
-            <div class="card-btn product" data-id="A001">
-                                                            <button id="cart" type="button" class="btn btn-outline-success">
+                <div class="card-body ">
+                    <h5 class="card-title">{{Descricao}}</h5>
+                    <p class="card-text" style="height:-20px;">{{PrecUnit}} €</p>
+                    <hr>
+                    <div class="card-btn product" data-id="A001">
+                        <button id="cart" type="button" class="btn btn-outline-success">
                             <i class="fa fa-shopping-cart"></i> Add to Cart
                         </button>
-                                                    <a href="/products/2" class="btn btn-outline-dark">
-                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
-                </a>
+                        <a href="/product/page/?productID={{Artigo}}" class="btn btn-outline-dark"> See More </a>
+                    </div>
+                </div>
             </div>
-
-    </div>
-</div>
-
-
-<div class="card col-lg-3 col-md-3 col-sm-6 ">
-    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
-        <img class="card-img-top" src="/images/products/huawei-p20-pro.png" alt="Card image cap">
-    </div>
-
-    <div class="card-body ">
-        <h5 class="card-title">Huawei P20 Pro</h5>
-        <p class="card-text" style="height:-20px;">788.99€ -
-                        Available
-                    </p>
-        <hr>
-            <div class="card-btn product" data-id="A004">
-                                                            <button id="cart" type="button" class="btn btn-outline-success">
-                            <i class="fa fa-shopping-cart"></i> Add to Cart
-                        </button>
-                                                    <a href="/products/3" class="btn btn-outline-dark">
-                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
-                </a>
-            </div>
-
-    </div>
-</div>
-
-
-<div class="card col-lg-3 col-md-3 col-sm-6 ">
-    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
-        <img class="card-img-top" src="/images/products/microsoft_pc1.png" alt="Card image cap">
-    </div>
-
-    <div class="card-body ">
-        <h5 class="card-title">MICROSOFT Surface Laptop 13.5' Platina</h5>
-        <p class="card-text" style="height:-20px;">993.79€ -
-                        Available
-                    </p>
-        <hr>
-            <div class="card-btn product" data-id="A002">
-                                                            <button id="cart" type="button" class="btn btn-outline-success">
-                            <i class="fa fa-shopping-cart"></i> Add to Cart
-                        </button>
-                                                    <a href="/products/13" class="btn btn-outline-dark">
-                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
-                </a>
-            </div>
-
-    </div>
-</div>
-
-<div class="card col-lg-3 col-md-3 col-sm-6 ">
-    <div class="image-card" style="height:100%; width:100%; display:flex; align-items:center;">
-        <img class="card-img-top" src="/images/products/mi-mix2.png" alt="Card image cap">
-    </div>
-
-    <div class="card-body ">
-        <h5 class="card-title">Xiaomi Mi Mix 2 S 64GB</h5>
-        <p class="card-text" style="height:-20px;">599€ -
-                        Available
-                    </p>
-        <hr>
-            <div class="card-btn product" data-id="A004">
-                <button id="cart" type="button" class="btn btn-outline-success">
-                    <i class="fa fa-shopping-cart"></i> Add to Cart
-                </button>
-                                                    <a href="/products/5" class="btn btn-outline-dark">
-                    See More <i class="fa fa-arrow-right-arrow-alt-circle-right"></i>
-                </a>
-            </div>
-
-    </div>
-</div>
+            {{/each}}
 </div>
 </div>
