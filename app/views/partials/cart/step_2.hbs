@@ -6,27 +6,30 @@
                             <form class="form-horizontal">
                                 <div class="form-group">
                                     <a> Address </a>
-                                    <input id="address" type="text" class="form-control" name="address" value="address" required="">
+                                    <input id="address" type="text" class="form-control" name="address" value="Address" required="">
                                 </div>
                             
                                 <div class="form-row">
                                     <div class="form-group col-md-8 ">
                                         <a> City </a>
-                                        <input id="city" type="text" class="form-control" name="city" value="city" required="">
+                                        <input id="city" type="text" class="form-control" name="city" value="City" required="">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <a> Zip </a>
-                                        <input id="zip" type="text" class="form-control" name="zip" value="zip" required="">
+                                        <input id="zip" type="text" class="form-control" name="zip" value="Zip" required="">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <a> Contact </a>
-                                    <input id="contact" type="text" class="form-control" name="contact" value="default@gmail.com" required="">
+                                    <a> Tax Identification Number </a>
+                                    <input id="nif" type="text" class="form-control" name="contact" value="000000000" required="">
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer ">
+                            <button id="load_data" type="submit" class="btn btn-outline-dark float-left" data-id="{{ user.id }}">
+                                Load Data
+                            </button>
                             <button id="step-2-next" type="submit" class="btn btn-outline-dark float-right" onclick="$('#step-3-link').removeClass('disabled'); $('#step-3-link').tab('show')">
                                 Next
                             </button>

@@ -30,7 +30,7 @@ function tokenMiddleware() {
 
 router.get('/profile/:userID',tokenMiddleware(), function(req,res){
   let userID = req.params.userID;
-  let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, Fac_Tel, NumContrib FROM Clientes WHERE Clientes.Cliente=' + '\'' + userID + '\'';
+  let query = 'SELECT Nome, Fac_Mor, Fac_Local, Fac_Cp, NumContrib FROM Clientes WHERE Clientes.Cliente=' + '\'' + userID + '\'';
 
   let options = {
     method: 'post',
@@ -94,6 +94,29 @@ router.post('/update/:userID',tokenMiddleware(), function(req, res) {
       }
     });
  
+});
+
+router.get('/:userID',tokenMiddleware(), function(req,res){
+  let userID = req.params.userID;
+  let query = 'SELECT Fac_Mor, Fac_Local, Fac_Cp, NumContrib FROM Clientes WHERE Clientes.Cliente=' + '\'' + userID + '\'';
+
+  let options = {
+    method: 'post',
+    body: query,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+  request(options, (error, response, body) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {
+        var client = body.DataSet.Table[0];
+       res.send(client);
+    }
+  });
 });
 
 

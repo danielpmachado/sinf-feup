@@ -34,7 +34,11 @@
                     {{/each}}
                 </div>
                 <div class="card-footer">
+                    {{#if user}}
                     <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn" onclick="$('#step-2-link').removeClass('disabled'); $('#step-2-link').tab('show')">Checkout</button>
+                    {{else}}
+                    <a class="btn btn-outline-dark float-right" href="/auth/register/form" >Sign Up to Checkout</a>
+                    {{/if}}
                     <div class=" pt-2">
                         Total price: <b id="totalPrice"></b> €
                     </div>

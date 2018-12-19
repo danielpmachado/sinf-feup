@@ -324,3 +324,20 @@ function banUser(context){
       url: '/admin/ban/' + userID});
 
 }
+
+$('#load_data').on('click', loadData);
+function loadData(context){
+    let userID = context.target.getAttribute("data-id");
+    $("li[data-id=" + userID + "]").remove();
+    
+    $.ajax({
+      url: '/user/' + userID,
+      success: function(data, textStatus, jQxhr) {
+        $("#address").val(data.Fac_Mor);
+        $("#city").val(data.Fac_Local);
+        $("#zip").val(data.Fac_Cp);
+        $("#nif").val(data.NumContrib);
+      }
+    });
+}
+
