@@ -63,13 +63,13 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 
 			var category = body.DataSet.Table;
         console.log(category);
-        res.render('top_category',{category});
+        res.render('admin/top_category',{category});
 	  }
 	});
 });
 
 router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
-	
+
 	let orderState = "P";
 	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
 
@@ -88,15 +88,15 @@ router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req,
 	  } else {
 
 			console.log(body);
-			var orders = body.DataSet.Table; 
-			console.log(orders); 
+			var orders = body.DataSet.Table;
+			console.log(orders);
       res.render('admin/manage_orders',{orders});
 	  }
 	});
 });
 
 router.get('/manage_orders/cancelled_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
-	
+
 	let orderState = "R";
 	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
 
@@ -115,15 +115,15 @@ router.get('/manage_orders/cancelled_orders',[adminMiddleware(),tokenMiddleware(
 	  } else {
 
 			console.log(body);
-			var orders = body.DataSet.Table; 
-			console.log(orders); 
+			var orders = body.DataSet.Table;
+			console.log(orders);
       res.render('admin/manage_orders_cancelled',{orders});
 	  }
 	});
 });
 
 router.get('/manage_orders/transformed_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
-	
+
 	let orderState = "T";
 	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
 
@@ -142,8 +142,8 @@ router.get('/manage_orders/transformed_orders',[adminMiddleware(),tokenMiddlewar
 	  } else {
 
 			console.log(body);
-			var orders = body.DataSet.Table; 
-			console.log(orders); 
+			var orders = body.DataSet.Table;
+			console.log(orders);
       res.render('admin/manage_orders_transf',{orders});
 	  }
 	});
@@ -202,7 +202,7 @@ router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 		console.error(error);
 		return;
 	  } else {
-			var products = body.DataSet.Table;  
+			var products = body.DataSet.Table;
       res.render('admin/best_sellers',{products});
 	  }
 	});
