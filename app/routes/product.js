@@ -42,7 +42,6 @@ router.get('/page',tokenMiddleware(), function(req,res){
       console.error(error);
       return;
     } else {
-      console.log(body);
       var context = body.DataSet.Table[0];
       if(context != null)
         context.Artigo = productID;

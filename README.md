@@ -48,3 +48,4 @@ db.dropDatabase()
 - [ ] Transformar documento - implementar
 - [ ] Mostrar nº vendas de cada produto
 - [ ] Criar nova base de dados
+- [ ] User sem encomendas - perde o Nome

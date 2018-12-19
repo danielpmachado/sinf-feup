@@ -1,0 +1,55 @@
+<div role="tabpanel" class="tab-pane fade show active" id="step-1" aria-labelledby="step-1-link">
+    <div class="col-md-17">
+        <div class="container">
+            <div class="card shopping-cart">
+                <div class="card-header bg-dark text-light ">
+                    <p class="float-left mb-0" style="padding-top: 5px">Shopping cart</p>
+                </div>
+                <div class="card-body">
+                    {{#each products}}
+                    <div class="product-order" data-id="{{ Artigo }}">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-2 text-center float-left">
+                                <img class="img-responsive" src="/images/products/{{ Artigo }}.png" alt="prewiew" width="120" height="80">
+                            </div>
+                            <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-8">
+                                <a href="/product/page/?productID={{ Artigo }}" class="product-name"><strong>{{ Descricao }}</strong></a>
+                                <p><b class="price">{{ PVP1 }}</b> €</p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 float-right">
+                                <button id="delete" type="button" class="btn btn-outline-danger float-right">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+
+                                <div class="quantity">
+                                    <input id="quantity" type="button" value="+" class="plus">
+                                    <input value="{{ count }}" class="qty" size="4" disabled="">
+                                    <input id="quantity" type="button" value="-" class="minus">
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    {{/each}}
+                </div>
+                <div class="card-footer">
+                    <button id="step-1-next" class="btn btn-outline-dark float-right nextBtn" onclick="$('#step-2-link').removeClass('disabled'); $('#step-2-link').tab('show')">Checkout</button>
+                    <div class=" pt-2">
+                        Total price: <b id="totalPrice"></b> €
+                    </div>
+                    <script>
+                        let prices = document.querySelectorAll('b.price');
+                        let quantities = document.querySelectorAll('input.qty');
+                        let totalPrice = 0;
+                        prices.forEach(function(element, index, arr) {
+                            // Falta multiplicar pela quantidade
+                            totalPrice += parseFloat(element.innerText) * quantities[index].value;
+                        });
+                        document.querySelector('#totalPrice').innerText = totalPrice;
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

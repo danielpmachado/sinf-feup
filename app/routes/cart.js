@@ -32,6 +32,7 @@ router.get('/', tokenMiddleware(), function(req, res) {
   } catch (err) {
     cart = null; 
   }
+  
   if(cart != null){
     var products = [];
     cart.forEach(function(element, index, a) {
