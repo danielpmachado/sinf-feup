@@ -54,6 +54,60 @@ router.get('/profile/:userID',tokenMiddleware(), function(req,res){
   });
 });
 
+router.get('/history/:userID',tokenMiddleware(), function(req,res){
+  let userID = req.params.userID;
+  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.DataCarga, cd.NomeFac, cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cd.Entidade=' + '\'' + userID + '\'';
+
+  let options = {
+    method: 'post',
+    body: query,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+
+  request(options, (error, response, body) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {     
+        var orders = body.DataSet.Table; 
+        res.render('history', {orders} );
+    
+    }
+  });
+});
+
+router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res){
+
+  let orderID = req.params.orderID;
+  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.NomeFac, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cd.Id=' + '\'' + orderID + '\'';
+
+  let options = {
+    method: 'post',
+    body: query,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+
+  request(options, (error, response, body) => {
+    if (error) {
+      console.error(error);
+      return;
+    } else {     
+        var orders = body.DataSet.Table; 
+        console.log(orders);
+        res.render('history', {orders} );
+    
+    }
+  });
+});
+
+
+
 router.post('/update/:userID',tokenMiddleware(), function(req, res) {
  
     let idUser = req.params.userID;
