@@ -132,7 +132,7 @@ function confirmationHandler(){
                         <div class="jumbotron text-center" style="background-color:transparent;">
                         <br><br><br>
                         <h1 class="display-3">Thank You!</h1><br>
-                        <p class="lead"> Your purchase has been successfully aproved. You will received your order as soon as possible.</p>
+                        <p class="lead"> Your purchase has been successfully aproved. You will receive your order as soon as possible.</p>
                         <hr>
                         <p class="lead"><br>
                           <a class="btn btn-success btn-lg" href="/" role="button">Continue to homepage</a>

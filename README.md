@@ -39,7 +39,7 @@ db.dropDatabase()
 - [x] Client Orders - profile page 
 - [x] Criar página - Orders
 - [x] Client Orders - show products - mostrar produtos de uma encomenda especifica
-- [ ] Criar Order (encomenda) - no final do processo do carrinho
+- [x] Criar Order (encomenda) - no final do processo do carrinho
 - [ ] Mostrar best sellers - admin, navbar e pagina inicial
 - [ ] Mostrar Top category  - todos os produtos da categoria
 - [ ] Pedir mais stock
