@@ -5,7 +5,7 @@
   </ol>
   <hr>
 
-  <div class="container-fluid product-section">
+  <div class="container-fluid mb-5 mt-5">
 
 	{{#if Artigo}}
 	<div class="row">
@@ -16,32 +16,64 @@
 			<div class="col-md-12">
 			<div class="rating-block">
 				<h2 class="bold padding-bottom-7">{{Peso}} <small>/ 5</small></h2>
-				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
-					<i class="fa fa-star"></i>
-				</button>			
-				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
-					<i class="fa fa-star"></i>
-				</button>
+
+				{{#if (compare Peso ">=" 1)}}
 				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
+				{{else}}
 				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
-				</button>
-				<button type="button" class="btn btn-dark btn-grey btn-sm" aria-label="Left Align" disabled>
+				</button>	
+				{{/if }}
+				{{#if (compare Peso ">=" 2)}}
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
 					<i class="fa fa-star"></i>
 				</button>
+				{{else}}
+				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>	
+				{{/if }}	
+				{{#if (compare Peso ">=" 3)}}
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>
+				{{else}}
+				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>	
+				{{/if }}	
+				{{#if (compare Peso ">=" 4)}}
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>
+				{{else}}
+				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>	
+				{{/if }}	
+				{{#if (compare Peso "==" 5)}}
+				<button type="button" class="btn btn-primary btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>
+				{{else}}
+				<button type="button" class="btn btn-dark  btn-sm" aria-label="Left Align" disabled>
+					<i class="fa fa-star"></i>
+				</button>	
+				{{/if }}			
+
 			</div>
 			</div>
 		</div>
 		</div>
 		<div class="col-md-6" id="description-box">
-			<h3 class="text" id="product-name-details"><strong>{{ Descricao }}</strong></h3>
-			<h6>{{Descricao1}}</h6>
-			<h4 class="text-success" id="price-tag">{{ PVP1 }} €</h4>
+			<h3 class="text" id="product-name-details">{{ Descricao }}</h3>
+			<h6 class="mt-3"><strong>{{Descricao1}}</strong></h6>
+			<h4 class="text-success mt-3" id="price-tag">{{ PVP1 }} €</h4>
 
-			<div class="row">
-				<div class="col-md-12 ">
+			<div class="row mt-3">
+				<div class="col-md-10 ">
 
 					<div class="product-buttons product" data-id="{{Artigo}}">
 						<button id="cart" type="button" class="btn btn-outline-success">
@@ -49,7 +81,7 @@
 						</button>
 					</div>
 
-					<p><span class="description-tag">Description</span></p>
+					<p><span class="description-tag"> <strong> Description </strong></span></p>
 					<p>
 						{{Observacoes}}
 					</p>

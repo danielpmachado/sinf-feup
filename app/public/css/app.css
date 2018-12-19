@@ -20,7 +20,8 @@ MAIN CONFS
 body{
     background-color: var(--main-text-color);
     /* font-family: 'Nunito', sans-serif; */
-    font-family: 'Raleway', sans-serif;
+    /*font-family: 'Raleway', sans-serif;*/
+    font-family: 'Montserrat',Arial,Helvetica,sans-serif;
     font-weight: 200;
     min-height: 100vh;
     position: relative;
@@ -655,7 +656,6 @@ PRODUCT
 
 #price-tag {
     font-size: 2.5em;
-    margin-top:50px;
 }
 
 .description-tag {
