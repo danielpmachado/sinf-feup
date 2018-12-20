@@ -19,8 +19,6 @@ MAIN CONFS
 
 body{
     background-color: var(--main-text-color);
-    /* font-family: 'Nunito', sans-serif; */
-    /*font-family: 'Raleway', sans-serif;*/
     font-family: 'Montserrat',Arial,Helvetica,sans-serif;
     font-weight: 200;
     min-height: 100vh;
@@ -66,6 +64,7 @@ div.abcRioButton.abcRioButtonLightBlue{
     color: var(--main-text-color);
     font-size:27px;
     font-family: var(--logo-text-font);
+    margin-top:5px;
 }
 
 #main-nav .navbar-nav .nav-link,
@@ -1238,8 +1237,9 @@ ORDERS
 --------
 */
 
-.ordersContainer .nav-tabs .nav-link.active {  
-    background-color: #f8f8f8;
+.nav-tabs .nav-link.active {  
+    background-color: var(--main-text-color);
+    border-bottom-color: var(--main-text-color);
 }
 
 
