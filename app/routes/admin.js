@@ -209,7 +209,7 @@ router.get('/manage/products',[adminMiddleware(),tokenMiddleware()], function(re
 
 router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 
-	let query = 'SELECT TOP(3) Artigo, Descricao, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao ORDER BY SUM(Quantidade) DESC';
+	let query = 'SELECT TOP(3) Artigo, Descricao, PrecUnit, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao, PrecUnit ORDER BY SUM(Quantidade) DESC';
 
 	let options = {
 	  method: 'post',
