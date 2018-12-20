@@ -42,7 +42,7 @@ db.dropDatabase()
 - [x] Criar Order (encomenda) - no final do processo do carrinho
 - [x] Mostrar best sellers - admin, e pagina inicial
 - [ ] Navbar - conteudo - bestsellers, etc
-- [ ] Mostrar Top category  - todos os produtos da categoria
+- [x] Mostrar Top category  - todos os produtos da categoria
 - [x] Pedir mais stock
 - [x] Mostrar Orders - listar todas as encomendas na pagina de Admin
 - [ ] Criar artigo - criar preço
