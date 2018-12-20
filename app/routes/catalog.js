@@ -43,7 +43,7 @@ router.get('/:categoryID',tokenMiddleware(), function(req,res){
         return;
       } else {
         var products = body.DataSet.Table;
-        res.render('catalog',{category: 'Computers', products});
+        res.render('catalog',{category: categoryID, products});
       }
     });
 });
