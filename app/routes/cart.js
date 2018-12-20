@@ -67,7 +67,6 @@ router.get('/', tokenMiddleware(), function(req, res) {
 
 /* PUT create order. */
 router.post('/orders/create', tokenMiddleware(), function(req, res) {
-  console.log(req.body)
   let options = {
     method: 'post',
     body: req.body,

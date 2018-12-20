@@ -115,7 +115,6 @@ function sendConfirmationRequest(){
       url: '/cart/orders/create',
       data: order,
       success: function(data, textStatus, jQxhr) {
-        console.log("Fdsfsd");
         confirmationHandler();
       }
     });
@@ -125,7 +124,6 @@ function sendConfirmationRequest(){
 }
 
 function confirmationHandler(){
-  console.log("gsfsd");
   let element = document.getElementById('progress-bar');
 
   element.innerHTML = `

@@ -68,10 +68,10 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 	});
 });
 
-router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
+router.get('/manage/orders/P',[adminMiddleware(),tokenMiddleware()], function(req, res) {
 
 	let orderState = "P";
-	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
+	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.NumDoc, cd.Entidade, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\' AND cd.TipoDoc=' + '\'' + "ECL" + '\'';
 
 	let options = {
 	  method: 'post',
@@ -86,46 +86,16 @@ router.get('/manage_orders',[adminMiddleware(),tokenMiddleware()], function(req,
 		console.error(error);
 		return;
 	  } else {
-
-			console.log(body);
 			var orders = body.DataSet.Table;
-			console.log(orders);
-      res.render('admin/manage_orders',{orders});
+      res.render('admin/manage_orders',{orders, pending : true});
 	  }
 	});
 });
 
-router.get('/manage_orders/cancelled_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
-
-	let orderState = "R";
-	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
-
-	let options = {
-	  method: 'post',
-	  body: query,
-	  json: true,
-	  url: 'http://localhost:2018/WebApi/Administrador/Consulta',
-	  headers: {'Authorization': 'Bearer ' + res.token}
-	};
-
-	request(options, (error, response, body) => {
-	  if (error) {
-		console.error(error);
-		return;
-	  } else {
-
-			console.log(body);
-			var orders = body.DataSet.Table;
-			console.log(orders);
-      res.render('admin/manage_orders_cancelled',{orders});
-	  }
-	});
-});
-
-router.get('/manage_orders/transformed_orders',[adminMiddleware(),tokenMiddleware()], function(req, res) {
+router.get('/manage/orders/T',[adminMiddleware(),tokenMiddleware()], function(req, res) {
 
 	let orderState = "T";
-	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
+	let query = 'SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cds.Estado =' + '\'' + orderState + '\'';
 
 	let options = {
 	  method: 'post',
@@ -144,7 +114,7 @@ router.get('/manage_orders/transformed_orders',[adminMiddleware(),tokenMiddlewar
 			console.log(body);
 			var orders = body.DataSet.Table;
 			console.log(orders);
-      res.render('admin/manage_orders_transf',{orders});
+      res.render('admin/manage_orders',{orders, pending:false});
 	  }
 	});
 });
@@ -256,13 +226,6 @@ router.post('/manage/products/:productID', tokenMiddleware(), function(req, res)
 			"CondPag": 2
 	}
 
-	let body_transform ={
-		"Tipodoc": "VFA",
-		"Serie": "A",
-		"Entidade": "F001",
-		"TipoEntidade": "F"
-	}
-
   let options = {
     method: 'post',
     body: body,
@@ -281,6 +244,34 @@ router.post('/manage/products/:productID', tokenMiddleware(), function(req, res)
   });
 
   
+});
+
+router.get('/manage/orders/:docId/:userID', tokenMiddleware(), function(req, res) {
+
+	let body ={
+		"Tipodoc": "FA",
+		"Serie": "A",
+		"Entidade": req.params.userID,
+		"TipoEntidade": "C",
+	}
+
+	let options = {
+    method: 'post',
+    body: body,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Vendas/Docs/TransformDocument/ECL/A/' + req.params.docId + '/000/true',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+  request(options, (error, response, body) => {
+    if (error) {
+      return;
+    } else {
+
+		 res.redirect('/admin/manage/orders/T');
+    }
+  });
+
 });
 
 module.exports = router;

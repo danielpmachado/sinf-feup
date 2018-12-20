@@ -1239,7 +1239,7 @@ ORDERS
 */
 
 .ordersContainer .nav-tabs .nav-link.active {  
-    background-color: grey;
+    background-color: #f8f8f8;
 }
 
 
