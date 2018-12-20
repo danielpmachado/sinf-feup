@@ -61,10 +61,32 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 		return;
 	  } else {
 
-			var category = body.DataSet.Table;
-        console.log(category);
-        res.render('admin/top_category',{category});
-	  }
+			var category = body.DataSet.Table[0];
+      console.log(category);
+			console.log(category.familia);
+
+
+	let query2 = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.familia =' + '\'' + category.familia + '\'';
+
+	let options2 = {
+		method: 'post',
+		body: query2,
+		json: true,
+		url: 'http://localhost:2018/WebApi/Administrador/Consulta',
+		headers: {'Authorization': 'Bearer ' + res.token}
+	};
+
+	request(options2, (error, response, body) => {
+			if (error) {
+				console.error(error);
+				return;
+			} else {
+				var products = body.DataSet.Table;
+				console.log(products);
+				res.render('admin/top_category',{products});
+			}
+		});
+	}
 	});
 });
 
@@ -244,13 +266,13 @@ router.get('/add_product', tokenMiddleware(), function (req, res) {
 */
 
 router.post('/manage/products/:productID', tokenMiddleware(), function(req, res) {
-	
+
 	let id = req.params.productID;
 	let quantity = req.body.quantity;
 
 	let body ={
-			"Linhas": [{"Artigo": id, "Quantidade":quantity}], 
-			"Tipodoc": "ECF", 
+			"Linhas": [{"Artigo": id, "Quantidade":quantity}],
+			"Tipodoc": "ECF",
 			"Entidade": "F001",
 			"TipoEntidade": "F",
 			"CondPag": 2
@@ -280,7 +302,7 @@ router.post('/manage/products/:productID', tokenMiddleware(), function(req, res)
     }
   });
 
-  
+
 });
 
 module.exports = router;
