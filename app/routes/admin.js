@@ -207,7 +207,7 @@ router.get('/manage/products',[adminMiddleware(),tokenMiddleware()], function(re
 });
 
 
-router.get('/best_selling_products',tokenMiddleware(), function(req,res){
+router.get('/best_selling_products',[adminMiddleware(),tokenMiddleware()], function(req,res){
 
 	let query = 'SELECT TOP(3) Artigo, Descricao, PrecUnit, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao, PrecUnit ORDER BY SUM(Quantidade) DESC';
 
@@ -231,26 +231,44 @@ router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 });
 
 
+router.get('/add_product/form',adminMiddleware(), function(req, res) {
+	res.render('admin/add_product');
+});
 
-/*
-router.get('/add_product', tokenMiddleware(), function (req, res) {
+router.get('/product_price/form',adminMiddleware(), function(req, res) {
+	res.render('admin/product_price');
+});
+
+router.post('/add_product/validate',tokenMiddleware(), function (req, res) {
+
+	let data = {
+	
+			Artigo: "A127",
+			Descricao: req.body.name,
+			Caracteristicas: "",
+			Observacoes: req.body.description,
+			CodBarras: "",
+			UnidadeBase: "UN",
+			UnidadeVenda: "UN",
+			UnidadeCompra: "UN",
+			UnidadeEntrada: "UN",
+			UnidadeSaida: "UN",
+			Marca: req.body.brand,
+			Familia: req.body.category,
+			Peso:req.body.score,
+			IVA: "23",
+			MovStock: "S"
+	}
+
+	console.log(data);
+
 
 	let options = {
 		method: 'post',
-		body: {"Artigo": <ID>,
-			"Descricao": <ITEM>,
-			"UnidadeBase": "UN",
-			"UnidadeVenda": "UN",
-			"UnidadeCompra": "UN",
-			"UnidadeEntrada": "UN",
-			"UnidadeSaida": "UN",
-			"IVA": <IVA>,
-			"MovStock": "S",
-		"Marca": <BRAND>},
+		body: data,
 		json: true,
-		url: 'http://localhost:2018/WebApi/Artigos/Actualiza',
-
-		headers: { 'Authorization': 'Bearer ' + res.token }
+		url: 'http://localhost:2018/WebApi/Base/Artigos/Actualiza',
+		headers: {'Authorization': 'Bearer ' + res.token}
 	};
 
 	request(options, (error, response, body) => {
@@ -258,12 +276,45 @@ router.get('/add_product', tokenMiddleware(), function (req, res) {
 			console.error(error);
 			return;
 		} else {
-			var products = body.DataSet.Table;
-			res.render('product_admin', context);
+			console.log('NICE !!!!!');
+			res.redirect('/admin/product_price/form');
 		}
 	});
 });
-*/
+
+router.post('/add_price',tokenMiddleware(), function (req, res) {
+
+	let data = {
+	
+		Artigo: "A127",
+		Moeda: "EUR",
+		Unidade: "UN",
+		Descricao: "",
+		PVP1: req.body.price
+	}
+
+	console.log(data);
+
+
+	let options = {
+		method: 'post',
+		body: data,
+		json: true,
+		url: 'http://localhost:2018/WebApi/Base/ArtigosPrecos/Actualiza',
+		headers: {'Authorization': 'Bearer ' + res.token}
+	};
+
+	request(options, (error, response, body) => {
+		if (error) {
+			console.error(error);
+			return;
+		} else {
+			console.log('NICE !!!!!');
+			res.redirect('/');
+		}
+	});
+});
+
 
 router.post('/manage/products/:productID', tokenMiddleware(), function(req, res) {
 
