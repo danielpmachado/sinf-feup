@@ -45,7 +45,7 @@ router.get('/manage/users', adminMiddleware(), function (req, res) {
 
 router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, res) {
 	let userID = req.params.userID;
-	let query = 'SELECT TOP(1) f.familia FROM Familias as f INNER JOIN Artigo as a ON f.familia=a.familia INNER JOIN LinhasDoc as ld ON ld.artigo=a.artigo GROUP BY f.familia ORDER BY SUM(ld.quantidade) ';
+	let query = 'SELECT TOP(1) f.familia, f.descricao FROM Familias as f INNER JOIN Artigo as a ON f.familia=a.familia INNER JOIN LinhasDoc as ld ON ld.artigo=a.artigo GROUP BY f.familia,f.descricao ORDER BY SUM(ld.quantidade) ';
 
 	let options = {
 	  method: 'post',
@@ -62,9 +62,6 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 	  } else {
 
 			var category = body.DataSet.Table[0];
-      console.log(category);
-			console.log(category.familia);
-
 
 	let query2 = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.familia =' + '\'' + category.familia + '\'';
 
@@ -82,8 +79,8 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 				return;
 			} else {
 				var products = body.DataSet.Table;
-				console.log(products);
-				res.render('admin/top_category',{products});
+				var name = category.descricao;
+				res.render('admin/top_category',{products, name});
 			}
 		});
 	}
@@ -179,7 +176,7 @@ router.get('/manage/products',[adminMiddleware(),tokenMiddleware()], function(re
 
 router.get('/best_selling_products',tokenMiddleware(), function(req,res){
 
-	let query = 'SELECT TOP(3) Artigo, Descricao, PrecUnit, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao, PrecUnit ORDER BY SUM(Quantidade) DESC';
+	let query = 'SELECT TOP(5) Artigo, Descricao, PrecUnit, SUM(Quantidade) AS TotalQuantity FROM LinhasDoc GROUP BY Artigo, Descricao, PrecUnit ORDER BY SUM(Quantidade) DESC';
 
 	let options = {
 	  method: 'post',
@@ -290,7 +287,7 @@ router.get('/manage/orders/:docId/:userID', tokenMiddleware(), function(req, res
       return;
     } else {
 
-		 res.redirect('/admin/manage/orders/T');
+			res.render('partials/other/success',{message: "The Order has been confirmed!"} );
     }
   });
 

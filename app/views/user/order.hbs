@@ -27,16 +27,24 @@
                     <div class="card fav-cart">
                         <div class="card-header bg-dark text-light">Order Products</div>
                         <div class="card-body">
-                            <h5 class="mb-4"><strong>Products</strong></h5>
+                            <h5><strong>Products</strong></h5>
                             
                             {{#each products}}
                             <div class="product-conf">
                                 <h6><strong>Name:</strong> {{descricao}}</h6>
-                                <h6 class="qty"><strong>Quantity:</strong>  {{quantidade}}</h6>
-                                <h6><strong>Price:</strong> {{PrecUnit}} €</h6>
+                                <h6 class="qty"><strong>Quantity: </strong>  {{quantidade}}</h6>
+                                <h6><strong>Price:</strong> {{PrecUnit}} € (IVA {{TaxaIva}} %)</h6>
                                 <br>
                             </div>
                             {{/each}}
+
+                            <h5><strong>Expedition Info</strong></h5>
+                            <h6><strong>Address: </strong> {{products.0.Morada}}, {{products.0.Localidade}} {{products.0.CodPostal}}</h6>
+                            <h6><strong>Tax Identification Number: </strong> {{products.0.NumContribuinte}}</h6>
+                            <hr>
+
+                                <h6 class="float-right"><strong>Total: </strong>{{products.0.TotalDocumento}} €</h6>
+                    
                         
                         </div>
                     </div>

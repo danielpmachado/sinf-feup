@@ -52,12 +52,15 @@ router.get('/', tokenMiddleware(), function(req, res) {
           console.error(error);
           return;
         } else {
+          if(body.DataSet != null){
           var context = body.DataSet.Table[0];
           context.count = cart[index].count;
           products.push(context);
           if(index == a.length - 1){
             res.render('cart', {'products': products});
           }
+          }else
+            res.render('cart');
         }
       });
     });

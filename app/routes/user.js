@@ -56,7 +56,7 @@ router.get('/profile/:userID',tokenMiddleware(), function(req,res){
 
 router.get('/history/:userID',tokenMiddleware(), function(req,res){
   let userID = req.params.userID;
-  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.DataCarga, cd.NomeFac, cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cd.Entidade=' + '\'' + userID + '\'';
+  let query = ' SELECT CONVERT(VARCHAR(10),cd.Data,103), cd.DataCarga, cd.NomeFac, cd.Id, cd.TotalMerc, cd.TotalIva, cd.TotalDocumento, cd.ModoPag, cd.NumContribuinte, cd.MoradaEntrega, cd.LocalidadeEntrega, cd.CodPostalEntrega, cds.Estado FROM CabecDoc cd INNER JOIN CabecDocStatus cds ON cd.id = cds.IdCabecDoc WHERE cd.Entidade=' + '\'' + userID + '\' AND cd.TipoDoc=' + '\'' + "ECL" + '\'';
 
   let options = {
     method: 'post',
@@ -73,7 +73,7 @@ router.get('/history/:userID',tokenMiddleware(), function(req,res){
       return;
     } else {     
         var orders = body.DataSet.Table; 
-        res.render('history', {orders} );
+        res.render('user/history', {orders} );
     
     }
   });
@@ -82,7 +82,7 @@ router.get('/history/:userID',tokenMiddleware(), function(req,res){
 router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res){
 
   let orderID = req.params.orderID;
-  let query = '  SELECT ld.descricao, ld.quantidade, ld.PrecUnit, ld.PrecoLiquido, ld.TaxaIva, ld.TotalIva FROM LinhasDoc as ld WHERE ld.IdCabecDoc =' + '\'' + orderID + '\'';
+  let query = 'SELECT cd.TotalDocumento, cd.NumContribuinte, cd.TotalIva, cd.Morada, cd.Localidade, cd.CodPostal, ld.TaxaIva, ld.descricao, ld.quantidade, ld.PrecUnit, ld.PrecoLiquido, ld.TaxaIva, ld.TotalIva FROM LinhasDoc as ld INNER JOIN CabecDoc as cd ON ld.IdCabecDoc = cd.Id WHERE ld.IdCabecDoc =' + '\'' + orderID + '\'';
 
   let options = {
     method: 'post',
@@ -99,7 +99,8 @@ router.get('/history/:userID/order/:orderID',tokenMiddleware(), function(req,res
       return;
     } else {     
         var products = body.DataSet.Table; 
-        res.render('historyOrder', {products} );
+        console.log(products);
+        res.render('user/order', {products} );
     
     }
   });
@@ -118,10 +119,12 @@ router.post('/update/:userID',tokenMiddleware(), function(req, res) {
         Nome: req.body.user,
         Morada: req.body.address,
         Localidade: req.body.city,
-        CodigoPostalLocalidade: req.body.city,
-        CodigoPostal: req.body.zip,
+        LocalidadeCodigoPostal: req.body.city,
+        CodigoPostal:  req.body.zip,
         NumContribuinte: req.body.nif,
         Moeda: "EUR",
+        Pais: "PT",
+        CondPag: 2,
         EmModoEdicao: true
 
     };
