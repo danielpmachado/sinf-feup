@@ -243,4 +243,44 @@ router.get('/add_product', tokenMiddleware(), function (req, res) {
 });
 */
 
+router.post('/manage/products/:productID', tokenMiddleware(), function(req, res) {
+	
+	let id = req.params.productID;
+	let quantity = req.body.quantity;
+
+	let body ={
+			"Linhas": [{"Artigo": id, "Quantidade":quantity}], 
+			"Tipodoc": "ECF", 
+			"Entidade": "F001",
+			"TipoEntidade": "F",
+			"CondPag": 2
+	}
+
+	let body_transform ={
+		"Tipodoc": "VFA",
+		"Serie": "A",
+		"Entidade": "F001",
+		"TipoEntidade": "F"
+	}
+
+  let options = {
+    method: 'post',
+    body: body,
+    json: true,
+    url: 'http://localhost:2018/WebApi/Compras/Docs/CreateDocument',
+    headers: {'Authorization': 'Bearer ' + res.token}
+  };
+
+  request(options, (error, response, body) => {
+    if (error) {
+      return;
+    } else {
+
+		 res.render('partials/other/success',{message: "Stock order has been successufuly placed"} );
+    }
+  });
+
+  
+});
+
 module.exports = router;

@@ -1,5 +1,8 @@
 EMPRESA: TECH4U
 
+FORNECEDOR:
+F001 (Preencher morada, condição de pagamento, etc);
+
 FAMILIAS:
 F001 - Computers
 F002 - Accessories
