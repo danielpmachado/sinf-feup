@@ -66,7 +66,7 @@ router.get('/top_category',[adminMiddleware(),tokenMiddleware()], function(req, 
 			console.log(category.familia);
 
 
-	let query2 = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a  INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.familia =' + '\'' + category.familia + '\'';
+	let query2 = 'SELECT a.Artigo, a.Descricao, am.PVP1 FROM Artigo as a INNER JOIN Familias ON a.Familia = Familias.Familia INNER JOIN ArtigoMoeda as am ON a.Artigo = am.Artigo WHERE Familias.familia =' + '\'' + category.familia + '\'';
 
 	let options2 = {
 		method: 'post',
