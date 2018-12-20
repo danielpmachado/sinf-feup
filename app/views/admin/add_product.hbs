@@ -1,67 +1,71 @@
-﻿<div class="catalog container-fluid">
-    <div class="row">
-            <div class="col-md-4">
-                    <img src="images/no-image.png" alt="" class="product-image-edit">
+﻿<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-sidebar">
+                    <img class="profile-user-pic" src="/images/products/A004.png" alt="product preview">
 
-            <div class="profile-user-menu">
-            <ul class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                  <input type="file" name="file" id="file" class="inputfile" style="display: none;"/>
-                  <label for="file"><i class="fa fa-upload"></i>  Choose a file...</label>
-                                    </ul>
+                        <div class="profile-user-name">
+                            IPhone X - 256 GB
                         </div>
-                    </div>
-        <div class="tab-content col-md-8">
-            <div id="home" class="tab-pane fade show active" style="margin-top:20px">
-                <div class="panel panel-default target">
-                      <form class="form-horizontal" role="form">
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Name:</label>
-                                  <div class="col-lg-8">
-                                      <input class="form-control" type="text" value="">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Model:</label>
-                                  <div class="col-lg-8">
-                                      <input class="form-control" type="text" value="">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Brand:</label>
-                                  <div class="col-lg-8">
-                                      <input class="form-control" type="text" value="">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Price:</label>
-                                  <div class="col-lg-8">
-                                      <input class="form-control" type="text" value="">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Stock:</label>
-                                  <div class="col-lg-8">
-                                      <input class="form-control" type="text" value="">
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-lg-3 control-label">Description:</label>
-                                  <div class="col-lg-8">
-                                      <textarea class="form-control" type="text" value="" rows="10"></textarea>
-                                  </div>
-                              </div>
-                              <div class="form-group">
-                                  <label class="col-md-3 control-label"></label>
-                                  <div class="col-md-8">
-                                      <input type="button" class="btn btn-outline-success" value="Save Changes">
-                                      <input type="reset" class="btn btn-outline-danger" value="Cancel">
-                                  </div>
-                              </div>
-                        </form>
+
+
+                </div>
+            </div>
+            <div class="profile-tabs tab-content col-md-9">
+                <div id="overview" class="tab-pane fade show active">
+                    <div class="card fav-card">
+                         <div class="card-header bg-dark text-light">Add Product</div>
+                        <div class="card-body">
+
+                            <form class="form-horizontal" method="post" action="/admin/add_product/validate">
+                             
+                                <div class="form-group">
+                                        <a> Name </a>
+                                        <input  id="name" type="text" class="form-control" name="name" value="IPhone X - 256 GB" required autofocus>
+                                    </div>
+                                    <div class="form-row">
+                                           <div class="form-group col-md-6 ">
+                                               <a> Brand </a>
+                                               <input  id="brand" type="text" class="form-control" name="brand" value="B001" required>
+                                           </div>
+                                           <div class="form-group col-md-6">
+                                               <a> Category </a>
+                                               <input  id="category" type="text" class="form-control" name="category" value="F001" required>
+                                           </div>
+                                          </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6 ">
+                                            <a> Warehouse </a>
+                                            <input  id="price" type="text" class="form-control" name="price" value="A1" required>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <a> Score </a>
+                                            <input  id="stock" type="text" class="form-control" name="score" value="4" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <a> Description </a>
+                                        <textarea id="description" type="text" class="form-control" name="description" rows="10"required>smartphone com capacidade de armazenamento de 256 GB e ecrã Super Retina de 5,8” (2436 x 1125 píxeis a 458 ppp), com relação de contraste de 1000000:1; resistente à água e ao pó; Face ID; processador A11 Bionic com arquitetura de 64 bits; carregamento sem fios; câmaras grande angular e teleobjetiva de 12 MP e câmara TrueDepth; gravação vídeo 4K a 24, 30 ou 60 fps; autonomia em conversação (sem fios) de até 21 horas.</textarea>
+                                    </div>
+
+                                    <div  class="form-group">
+                                        <a> Product Image </a>
+                                        <input style="margin-left:20px;"type="file" name="avatar">
+                                    </div>
+
+
+                                    <div class="form-group float-right">
+                                        <button type="submit" class="btn btn-dark ">Next</button>
+                                    </div>
+
+                                </form>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
+</div>

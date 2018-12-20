@@ -17,12 +17,13 @@
                     <a  id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
                         <i class="fa fa-user"></i> Admin
                     </a>
-                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item align-left" href="/admin/manage/users">Manage Users</a>
                         <a class="dropdown-item align-left" href="/admin/manage_orders">Manage Orders</a>
                         <a class="dropdown-item align-left" href="/admin/manage/products">Manage Products</a>
                         <a class="dropdown-item align-left" href="/admin/best_selling_products">Best Selling Products</a>
                         <a class="dropdown-item align-left" href="/admin/top_category">Top Category</a>
+                        <a class="dropdown-item align-left" href="/admin/add_product/form">Add Product</a>
                          <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/auth/logout">Logout</a>
                     </div>
@@ -32,7 +33,7 @@
                     <a  id="nav_signIn" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdownMenuButton">
                         <i class="fa fa-user"></i> {{user.name}}
                     </a>
-                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu mt-3" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item align-left" href="/user/profile/{{user.id}}">Profile</a>
                         <a class="dropdown-item" href="/auth/logout">Logout</a>
                     </div>
