@@ -1,6 +1,10 @@
 # SINF
 
-### Intall Node
+## Final Result
+
+![UML](https://github.com/dolfander/sinf-feup/blob/master/tech4u.png)
+
+### Install Node
 ```
 sudo apt update
 sudo apt install nodejs
